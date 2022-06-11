@@ -1,0 +1,16 @@
+take a input fro user
+introducing a function checkPrime
+initiate a variable prime=true
+for loop 
+i=2
+num(our input let 5)
+5%2=3!=0
+so prime true 
+i=3
+5%3=2!=0
+so prime =true
+if 5%i=0 then prime false 
+if prime true 
+log prime
+if prime false
+log not prime 

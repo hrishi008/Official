@@ -1,0 +1,18 @@
+body{
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: rgb(21, 21, 21);
+    color: white;
+}
+.col-5 ul li{
+    list-style: none;
+}
+.bg2{
+    background-color: #f6f6f6;
+    color: black;
+}
+i{
+    font-size: 30px;
+}
+p{
+    color: #757171;
+}

@@ -1,0 +1,17 @@
+td{
+    height: 150px;
+    width: 150px;
+    background: radial-gradient(#e89090,#67dddd);
+    margin: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    font-size: 100px;
+    color: rgb(119, 19, 19);
+}
+body{
+    background-image: url(../media/background.png);
+    background-size: cover;
+    color: #e89090;
+}
+table{
+    margin-top: 50px;
+}

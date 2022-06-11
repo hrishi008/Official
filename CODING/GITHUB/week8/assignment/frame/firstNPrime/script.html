@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <style>
+        .heading{
+            font-size: 100px;
+        }
+        @media(max-width:600px){
+            .heading{
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="text-center bg-dark text-warning">
+    <p class="heading">First n Prime numbers</p>
+    <p>
+        // first n prime numbers <br>
+var a=prompt("enter a number");<br>
+firstNPrime(a);<br>
+function firstNPrime(num){<br>
+    var count=0;<br>
+    for(let i=2;i<=1000;i++){<br>
+        function checkPrime(num){<br>
+            var prime=true;<br>
+            for(let p=2;p<i;p++){<br>
+                if(i%p==0){<br>
+                    prime=false;<br>
+                }<br>
+            }<br>
+            return(prime);<br>
+        }<br>
+        var prime=checkPrime(i);<br>
+        if(prime==true){<br>
+            console.log(i);<br>
+            count++;<br>
+        }<br>
+        if(count==num){<br>
+            break;<br>
+        }<br>
+    }<br>
+}<br>
+
+    </p>
+</body>
+</html>

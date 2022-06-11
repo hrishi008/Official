@@ -1,0 +1,140 @@
+body{
+    margin: 0px;
+    font-family: 'PT Sans', sans-serif;
+}
+.navbar{
+    width: 100%;
+    background-color: coral;
+    position: fixed;
+    top: 0px;
+    padding: 1%;
+}
+nav ul li {
+    float: left;
+    margin-right: 5%;
+    list-style-type: none;
+}
+a{
+    color: antiquewhite;
+    font-weight: 1000;
+    font-size: x-large;
+    text-decoration: none;
+    color: #395b62;
+}
+a button{
+    padding: 0.5% 3%;
+    float: right;
+    margin-right: 4%;
+    font-size: large;
+    background-color: rgb(107, 10, 10);
+    color: antiquewhite;
+    border: 0px;
+    border-radius: 50%;
+}
+a button:hover{
+    background-color: antiquewhite;
+    color: rgb(107, 10, 10);
+}
+.home{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    font-size: 175%;
+    color: rgb(67 66 82);
+    background-color: #0cccff;
+    margin: 10px 0px;
+    width: 100%;
+}
+.home-text{
+    align-self: center;
+    padding: 2%;
+    width: 100%;
+    margin-right: 0%;
+}
+.home-img img{
+    width: 100%;
+    padding: 5%;
+}
+.about{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    font-size: 200%;
+    color: rgb(67 66 82);
+    background-color: #0cccff;
+    margin: 10px 0px;
+    background-color: #d1e0e6;
+
+}
+.about-text{
+    align-self: center;
+    padding: 4%;
+    color: #395b62;
+}
+.about-img img{
+    width: 100%;
+}
+.skills{
+    background-color: #373a3b;
+    color: rgb(62, 58, 58);
+    padding: 3%;
+    display: grid;
+    grid-template-columns: repeat(4,23%);
+    grid-column-gap: 2%;
+    text-align:start;
+}
+.skill{
+    padding: 2% 4%;
+    background-color: rgb(154, 157, 136);
+    border-radius: 20px;
+    border-bottom:5px solid #d1e0e6;
+    margin-top: 0;
+}
+.career{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+}
+.career-img img{
+    width: 100%;
+}
+.form{
+    align-self: center;
+    padding-left: 0%;
+}
+form{
+    background: rgb(98, 180, 234);
+    color: aliceblue;
+    padding: 5%;
+    width: 30%;
+    text-align: center;
+    border-radius: 20px;
+    float: right;
+    margin-right: 25%;
+}
+input{
+    width: 80%;
+    border-radius: 20px;
+    border: 0;
+}
+input:hover{
+    box-shadow: 0 0 5px yellow;
+}
+input[type="submit"]{
+    background: rgb(38, 154, 231);
+    color: aliceblue;
+    border: 0px;
+    padding: 5% 15%;
+    border-radius: 25px;
+   
+}
+input[type="submit"]:hover{
+    background-color: aliceblue;
+    color: rgb(38, 154, 231);
+    box-shadow: 0 0 5px #0cccff;
+}
+
+.footer{
+    color: #98989b;
+    background-color: rgb(25, 20, 20);
+    text-align: center;
+    padding: 5%;
+   
+}

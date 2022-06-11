@@ -1,0 +1,10 @@
+.card1{
+    width: 550px;
+    box-shadow: 0 0 5px black;
+}
+.color1{
+    color: rgb(128, 121, 121)
+}
+.letter1{
+    letter-spacing: 5px;
+}

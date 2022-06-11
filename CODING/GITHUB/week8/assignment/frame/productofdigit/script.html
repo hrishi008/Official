@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <style>
+        .heading{
+            font-size: 100px;
+        }
+        @media(max-width:600px){
+            .heading{
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="text-center bg-dark text-warning">
+    <p class="heading">Product of digits of a Numbers</p>
+    <p>
+        alert("pro duct of digits of a number");<br>
+        let a=prompt("Product of digits of a Numbers");<br>
+        let mod=0;<br>
+        let prdct=1;<br>
+        while(a>0){<br>
+            mod=a%10;<br>
+            a=parseInt(a/10);<br>
+            prdct=prdct*mod;<br>
+        }<br>
+        console.log(prdct);
+        <br>    </p>
+</body>
+</html>

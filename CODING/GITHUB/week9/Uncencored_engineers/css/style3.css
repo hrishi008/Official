@@ -1,0 +1,20 @@
+body{
+    background-image: url(https://cdn.wallpapersafari.com/60/39/2K7N8n.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 745px;
+}
+.back1{
+    height: 745px;
+    background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.541),rgb(0, 0, 0));
+    margin-left: -20px;
+    width: 101.2%;
+    padding-top: 100px;
+}
+.back2{
+    background-color: black;
+    box-shadow: 0 0 10px rgb(128, 227, 238);
+    width: 450px;
+    height: 300px;
+    border-radius: 20px;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Main </title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(126, 4, 4);
+        }
+        a{
+            font-size: 32px;
+            font-weight: 700;
+            text-decoration: none;
+            color: rgb(170, 187, 42);
+        }
+        #container{
+            display: flex;
+        }
+        #menu{
+            width: 20%;
+        }
+        #iframe{
+            width: 80%;
+
+        }
+        .ad{
+           background: linear-gradient(red,black);
+            margin: 5%;
+            padding: 10%;
+        }
+        #logo{
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgb(221, 255, 0);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <div ><img id="logo" src="http://weeklr.com/wp-content/uploads/2019/01/Rishi-Name-Logo-Photo-Download-Wallpaper.jpg" height="200px" width="200px" ></div>
+            <div class="ad">
+                <a href="page1.html" target="rightpanel">Mobile</a>
+            </div>
+            <div class="ad">
+                <a href="page2.html" target="rightpanel">TV</a>
+            </div >
+            <div class="ad">
+                <a href="page3.html" target="rightpanel">Laptop</a>
+            </div>
+            <div class="ad">
+                <a href="page4.html" target="rightpanel">Men's Clothing</a>
+            </div>
+        </div>
+        <div id="iframe">
+            <iframe name="rightpanel" src="page1.html" width="100%" height="1200px"></iframe>
+        </div>
+    </div>
+
+</body>
+
+</html>

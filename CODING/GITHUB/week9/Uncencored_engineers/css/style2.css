@@ -1,0 +1,30 @@
+.back{
+    background-image: url(https://cdn.wallpapersafari.com/60/39/2K7N8n.jpg);
+    height: 1000px;
+}
+.back2{
+    height: 1000px;
+    background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.541),rgb(0, 0, 0));
+    margin-left: -20px;
+    width: 102%;
+}
+.logo-img{
+    margin-left: -50px;
+}
+.float1{
+    float: right;
+    margin-top: -75px;
+    margin-right: 50px;
+}
+.btn-danger{
+    background-color: rgb(211, 20, 20);
+}
+.text-color{
+    color: rgb(211, 20, 20);
+}
+.m-150{
+  margin-top: 150px;
+}
+.sign-up{
+    border: 2px solid rgb(211, 20, 20);
+}

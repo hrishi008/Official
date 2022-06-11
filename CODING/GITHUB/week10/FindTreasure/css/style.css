@@ -1,0 +1,35 @@
+body{
+    background-image: url(../media/background.png);
+}
+.button{
+    width: 80px;
+    height: 80px;
+    background-color: green;
+    color: wheat;
+    font-size: 30px;
+}
+.button:hover{
+    box-shadow: 0 0 10px yellow;
+}
+.button:focus{
+    background-color: grey;
+}
+.button:visited{
+    background-color: yellow;
+}
+.frame{
+    width: 80px;
+    height: 80px;
+}
+
+@media (max-width: 1100px) {
+    .button{
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+    .frame{
+        width: 30px;
+        height: 30px;
+    }
+}

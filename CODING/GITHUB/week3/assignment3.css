@@ -1,0 +1,47 @@
+table{
+    width: 100%;
+    
+}
+h1{
+    margin-left: 70%;
+    font-style: oblique;
+    font-size: 400%;
+}
+img{
+    border-radius: 50%;
+}
+div{
+    background-color: rgba(rgb(10, 123, 62), rgb(68, 221, 68), rgb(65, 65, 92), .5);
+    padding: 20px;
+}
+form{
+    text-align: center;
+}
+body{
+    background-image: url(https://previews.123rf.com/images/iarti/iarti1812/iarti181200367/114025262-sweet-pattern-with-dessert-icons-colorful-style-on-green-background-for-cupcake-website-bakery-shop-.jpg);
+}
+p{
+    text-align: center;
+}
+input{
+    background-color: pink;
+}
+textarea{
+    background-color: pink;
+}
+#head{
+    background-image: url(https://thumbs.dreamstime.com/z/japanese-restaurant-food-banner-panoramic-closeup-sushi-plate-presentation-background-closeup-aburi-oshi-sushi-seared-salmon-226896778.jpg);
+}
+#foot{
+    background-color: darkslategrey;
+}
+.zoom{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.zoom:hover{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}

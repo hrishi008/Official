@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mobile</title>
+<style>
+    body{
+        color: whitesmoke;
+        text-align: center;
+        background-color: rgb(175, 4, 4);
+    }
+    nav{
+        display: flex;
+        background: linear-gradient(red,black);
+        color: whitesmoke;
+        justify-content: space-around;
+        align-items: center;
+    }
+    a{
+        font-size: large;
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    button{
+        background-color: darkred;
+        box-shadow: 0 0 5px yellow;
+    }
+    #container{
+        display: flex;
+    }
+    aside{
+        width: 20%;
+        background-color: darkred;
+        margin: 5px;
+        text-align: center;
+    }
+    #item{
+        padding: 20px;
+        margin: 5px;
+        background-color: rgb(74, 2, 2);
+    }
+
+</style>
+</head>
+
+<body>
+<header>
+    <h1>Laptops</h1>
+</header>
+<nav>
+    <div id="rishi"><h2>Rishi </h2></div>
+    <div id="menu"> 
+        <table cellpadding="20px" >
+            <tr>
+                <td><a href="#">Home</a></td>
+                <td><a href="#">About</a></td>
+                <td><a href="#">services</a></td>
+                <td><a href="#">reviews</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="button">
+        <button><a href="#footer">Contact</a></button>
+    </div>
+</nav>
+<div id="container">
+    <aside id="aside">
+        <div id="item"><a href="page3-1.html" target="box">Acer</a></div>
+        <div id="item"><a href="page3-2.html" target="box">Lenovo</a></div>
+        <div id="item"><a href="page3-3.html" target="box">HP</a></div>
+        <div id="item"><a href="page3-4.html" target="box">Realme</a></div>
+        <div id="item"><a href="page3-5.html" target="box">Asus</a></div>
+        <div id="item"><a href="page3-6.html" target="box">Dell</a></div>
+    </aside>
+    <main>
+        <iframe name="box" width="900px" height="1000px" src="page3-1.html">
+          
+        </iframe>
+       
+    </main>
+</div>   
+</body>
+</html>

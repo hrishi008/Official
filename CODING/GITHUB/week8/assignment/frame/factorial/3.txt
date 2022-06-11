@@ -1,0 +1,21 @@
+first we gave an alert for what we are going to do in this perticular section. 
+take value of n from user
+define a variable fact
+for loop a variable i with initial value 1
+till n with incriment of 1
+Aand apply fact=fact*i;
+iteration 1:
+i=1;
+fact=1*1=1
+i=i*1;
+means i=1;
+iteration 2:
+i=2;
+fact=1*2=2;
+i=i*1;
+means i=3;
+fact=3*3=6;
+and so on.... till i=n;
+loop is over now
+print fact;
+

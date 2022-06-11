@@ -1,0 +1,23 @@
+a= user input 
+function firstNPrime(a)
+in this function
+count =0
+let a=5
+for i=2
+check prime 
+prime=true 
+log i and count=1
+for i=3
+check prime 
+prime=true 
+log i and count=2
+for i=4
+check prime 
+prime=false 
+ count=2
+for i=5
+check prime 
+prime=true 
+log i and count=3
+so on till i=11
+then count=5 =num so loop break 

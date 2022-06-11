@@ -1,0 +1,44 @@
+@import url(https://hrishi008.github.io/Official/CODING/GITHUB/week6/universal/universal.css);
+.res{
+    height: 500px;
+}
+@media (min-width: 300px) {
+    .res{
+    background-color: red;
+    }
+}
+@media (min-width: 600px) {
+    .res{
+    background-color: black;
+    }
+}
+@media (min-width: 900px) {
+    .res{
+    background-color: green;
+    }
+}
+@media (min-width: 1200px) {
+    .res{
+    background-color: yellow;
+    }
+}
+@media (min-width: 1500px) {
+    .res{
+    background-color: orange;
+    }
+}
+@media (min-width: 1800px) {
+    .res{
+    background-color: pink;
+    }
+}
+@media (min-width: 2100px) {
+    .res{
+    background-color: blue;
+    }
+}
+@media (min-width: 2400px) {
+    .res{
+    background-color: voilet;
+    }
+}

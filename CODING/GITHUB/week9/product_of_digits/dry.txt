@@ -1,0 +1,18 @@
+take a number from user let 1234
+now 1234>0 so enter loop 
+mod=1234%10=4
+a=int(1234/10)=123
+prdct=1*4=4
+now 123>0 so enter loop 
+mod=123%10=3
+a=int(123/10)=12
+prdct=4*3=12
+now 12>0 so enter loop 
+mod=12%10=2
+a=int(12/10)=1
+prdct=12*2=24
+now 1>0 so enter loop 
+mod=1%10=1
+a=int(1/10)=0
+prdct=24*1=24
+now 0!>0 so loop break

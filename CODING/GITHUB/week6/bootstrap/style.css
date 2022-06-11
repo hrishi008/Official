@@ -1,0 +1,50 @@
+.offadjust{
+    background-color: rgb(78, 131, 209);
+    color: white;
+    position: fixed;
+    top: 80px;
+}
+.footer{
+    padding-bottom: 60px;
+    margin-top: 60px;
+}
+.width-limit{
+    width: 15%;
+}
+.container .row .col{
+    text-align: center;
+}
+.color-brown{
+    color: rgb(163, 73, 34);
+}
+.col-4{
+    margin-top: 20px;
+}
+.p-10{
+    padding: 30px;
+}
+#career{
+    background-color: aquamarine;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+.parting{
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    margin: 40px none;
+    color: rgb(104, 123, 143);
+}
+.transform{
+    transform: rotateX(45deg);
+}
+@media (max-width: 900px) {
+    .width-limit{
+        width: 50%;
+    }
+    .card-body{
+        text-align: center;
+        font-size: x-small;
+    }
+}

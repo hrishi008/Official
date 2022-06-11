@@ -1,0 +1,20 @@
+first we gave an alert for what we are going to do in this perticular section. 
+take value of n from user
+define a variable sum
+for loop a variable i with initial value 1
+till n with incriment of 1
+iteration 1:
+i=1;
+sum=0+1=1
+i=i+1;
+means i=2;
+iteration 2:
+i=2;
+sum=1+2=3;
+i=i+1;
+means i=3;
+sum=3+3=6;
+and so on.... till i=n;
+loop is over now
+print sum;
+

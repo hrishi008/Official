@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <style>
+        .heading{
+            font-size: 100px;
+        }
+        @media(max-width:600px){
+            .heading{
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="text-center bg-dark text-warning">
+    <p class="heading">Sum of digits of a Numbers</p>
+    <p>
+        // sum of figit of given number <br>
+        alert("Sum of digits of a number");<br>
+let digit=prompt("enter a number");<br>
+        let sum=0;<br>
+        while(digit>0){<br>
+             mod = digit%10;<br>
+            digit= parseInt(digit/10);<br>
+            sum=sum+mod;<br>
+        }<br>
+        console.log(sum);<br>
+        
+    </p>
+</body>
+</html>

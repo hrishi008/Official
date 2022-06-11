@@ -1,0 +1,23 @@
+a=user input let 5
+nFabonacci(5);
+i=1
+c=a=0
+log c
+i=2
+c=b=1
+log c 
+i=3 
+c=0+1=1 
+a= b = 1
+b=c=1
+log c 
+i=4 
+c=1+1=2 
+a= b = 1
+b=c=2
+log c 
+i=5 
+c=1+2=3 
+a= b = 2
+b=c=3
+log c 

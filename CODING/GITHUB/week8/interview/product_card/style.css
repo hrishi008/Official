@@ -1,0 +1,19 @@
+.card1{
+    width: 550px;
+    box-shadow: 0 0 5px black;
+}
+.muted{
+    color: rgb(132, 137, 142);
+}
+.font{
+    font-size: 25px;
+}
+.link{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+.text1{
+    text-align: justify;
+    margin: 20px 30px;
+}

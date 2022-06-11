@@ -1,0 +1,30 @@
+body{
+    margin: 0px;
+    padding: 20px;
+    margin-bottom: 1000px;
+}
+h4{
+    margin: 0px;
+}
+.parent{
+    margin: 0px;
+    background-color: aquamarine;
+    padding: 5px;
+    position: relative;
+    /* left: 20px; */
+    /* position: absolute; */
+    /* position: inherit; */
+    /* position: fixed; */
+    /* position: sticky;
+    top: 0px; */
+}
+.Child{
+    padding: 5px;
+    background-color: red;
+    margin: 3px;
+}
+.item-1{
+    position: sticky;
+    top: 0px;
+
+}
