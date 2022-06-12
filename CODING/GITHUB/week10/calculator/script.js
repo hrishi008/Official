@@ -20,7 +20,132 @@ var btn18 = document.querySelector('#b18');
 var btn19 = document.querySelector('#b19');
 var btn20= document.querySelector('#b20');
 var btn21= document.querySelector('#b21');
-scr.textContent='9';
-scr.textContent+='9';
-let y =parseInt(scr)/9;
-console.log(y);
+var fun = 0;
+var y= 0;
+btn1.addEventListener('click',function(){
+    scr.textContent='';
+})
+btn2.addEventListener('click',function(){
+    scr.textContent='';
+})
+btn3.addEventListener('click',function(){
+    scr.textContent+='7';
+})
+btn4.addEventListener('click',function(){
+    scr.textContent+='8';
+})
+btn5.addEventListener('click',function(){
+    scr.textContent+='9';
+})
+btn6.addEventListener('click',function(){
+    scr.textContent+='4';
+})
+btn7.addEventListener('click',function(){
+    scr.textContent+='5';
+})
+btn8.addEventListener('click',function(){
+    scr.textContent+='6';
+})
+btn9.addEventListener('click',function(){
+    scr.textContent+='1';
+})
+btn10.addEventListener('click',function(){
+    scr.textContent+='2';
+})
+btn11.addEventListener('click',function(){
+    scr.textContent+='3';
+})
+btn12.addEventListener('click',function(){
+    scr.textContent+='.';
+})
+btn13.addEventListener('click',function(){
+    scr.textContent+='0';
+})
+btn14.addEventListener('click',function(){
+    scr.textContent+='00';
+})
+btn15.addEventListener('click',function(){
+    var z=0;
+    switch(fun){
+        case 1:
+            z= scr.textContent;
+            z=parseInt(z);
+            z=z+y;
+            scr.textContent=z;
+        break;
+        case 2:
+            z= scr.textContent;
+            z=parseInt(z);
+            z=z-y;
+            scr.textContent=z;
+        break;
+        case 3:
+            z= scr.textContent;
+            z=parseInt(z);
+            z=z*y;
+            scr.textContent=z;
+        break;
+        case 4:
+            z= scr.textContent;
+            z=parseInt(z);
+            z=y/z;
+            scr.textContent=z;
+        break;
+        case 5:
+            y=y*y;
+          
+            scr.textContent=y;
+        break;
+        case 6:
+          y=Math.sqrt(y);
+            scr.textContent=y;
+        break;
+        default:
+        break;
+                                                                }
+})
+btn16.addEventListener('click',function(){
+    //+
+    y= scr.textContent;
+    y=parseInt(y);
+    fun=1;
+    scr.textContent='';
+})
+btn17.addEventListener('click',function(){
+    //-
+    y= scr.textContent;
+    y=parseInt(y);
+    fun=2;
+    scr.textContent='';
+})
+btn18.addEventListener('click',function(){
+    //*
+    y= scr.textContent;
+    y=parseInt(y);
+    fun=3;
+    scr.textContent='';
+})
+btn19.addEventListener('click',function(){
+    // devide
+    y= scr.textContent;
+    y=parseInt(y);
+    fun=4;
+    scr.textContent='';
+})
+btn20.addEventListener('click',function(){
+    // square
+    y= scr.textContent;
+    y=parseInt(y);
+    y=y*y;
+    scr.textContent=y;
+ 
+})
+btn21.addEventListener('click',function(){
+    //root
+    y= scr.textContent;
+    y=parseInt(y);
+    y=Math.sqrt(y);
+    scr.textContent=y;
+   
+})
+

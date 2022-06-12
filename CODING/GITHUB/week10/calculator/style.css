@@ -5,14 +5,29 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     color: antiquewhite;
+
 }
 .body{
     width: 420px;
     height: 600px;
-    background: #000;
+    background: linear-gradient(90deg,rgb(70, 13, 13), black,black,black,rgb(84, 19, 19));
     border-radius: 30px;
     border: 5px solid rgb(255, 255, 255);
     box-shadow: 0 0 50px black;
+    animation: start 5s;
+}
+.hk{
+    line-height: 15px;
+}
+@keyframes start {
+    from{
+       opacity: 0;
+       transform: rotateZ(0deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateY(1080deg);
+    }
 }
 .screen{
     background-color: greenyellow;
