@@ -24,3 +24,5 @@ function check(arr){
     }
     return x;
 }
+let n=6;
+console.log(a[a.length-n]);
