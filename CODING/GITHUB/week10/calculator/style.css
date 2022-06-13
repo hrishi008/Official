@@ -14,7 +14,7 @@ body{
     border-radius: 30px;
     border: 5px solid rgb(255, 255, 255);
     box-shadow: 0 0 50px black;
-    animation: start 5s;
+    animation: start ;
 }
 .hk{
     line-height: 15px;

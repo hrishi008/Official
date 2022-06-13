@@ -22,8 +22,12 @@ var btn20= document.querySelector('#b20');
 var btn21= document.querySelector('#b21');
 var fun = 0;
 var y= 0;
+var z=0;
 btn1.addEventListener('click',function(){
     scr.textContent='';
+    y=0;
+    z=0;
+    fun=0;
 })
 btn2.addEventListener('click',function(){
     scr.textContent='';
@@ -65,87 +69,123 @@ btn14.addEventListener('click',function(){
     scr.textContent+='00';
 })
 btn15.addEventListener('click',function(){
-    var z=0;
     switch(fun){
         case 1:
             z= scr.textContent;
-            z=parseInt(z);
+            z=parseFloat(z);
             z=z+y;
+            y=0;
             scr.textContent=z;
+            fun=0;
         break;
         case 2:
             z= scr.textContent;
-            z=parseInt(z);
+            z=parseFloat(z);
             z=z-y;
+            y=0;
             scr.textContent=z;
+            fun=0;
         break;
         case 3:
             z= scr.textContent;
-            z=parseInt(z);
+            z=parseFloat(z);
             z=z*y;
+            y=0;
             scr.textContent=z;
+            fun=0;
         break;
         case 4:
             z= scr.textContent;
-            z=parseInt(z);
+            z=parseFloat(z);
             z=y/z;
+            y=0;
             scr.textContent=z;
-        break;
-        case 5:
-            y=y*y;
-          
-            scr.textContent=y;
-        break;
-        case 6:
-          y=Math.sqrt(y);
-            scr.textContent=y;
+            fun=0;
         break;
         default:
         break;
-                                                                }
+}
 })
 btn16.addEventListener('click',function(){
     //+
-    y= scr.textContent;
-    y=parseInt(y);
-    fun=1;
-    scr.textContent='';
+    if(fun!=0){
+        z= scr.textContent;
+            z=parseFloat(z);
+            z=z+y;
+            y=z;
+        scr.textContent='';
+    }
+    else{
+        y= scr.textContent;
+        y=parseFloat(y);
+        fun=1;
+        scr.textContent='';
+    }
 })
 btn17.addEventListener('click',function(){
     //-
-    y= scr.textContent;
-    y=parseInt(y);
-    fun=2;
-    scr.textContent='';
+    if(fun!=0){
+        z= scr.textContent;
+            z=parseFloat(z);
+            z=z-y;
+            y=z;
+        scr.textContent='';
+    }
+    else{
+        y= scr.textContent;
+        y=parseFloat(y);
+        fun=2;
+        scr.textContent='';
+    }
 })
 btn18.addEventListener('click',function(){
     //*
-    y= scr.textContent;
-    y=parseInt(y);
-    fun=3;
-    scr.textContent='';
+    if(fun!=0){
+        z= scr.textContent;
+            z=parseFloat(z);
+            z=z*y;
+            y=z;
+        scr.textContent='';
+    }
+    else{
+        y= scr.textContent;
+        y=parseFloat(y);
+        fun=3;
+        scr.textContent='';
+    }
 })
 btn19.addEventListener('click',function(){
     // devide
-    y= scr.textContent;
-    y=parseInt(y);
-    fun=4;
-    scr.textContent='';
+    if(fun!=0){
+        z= scr.textContent;
+            z=parseFloat(z);
+            z=y/z;
+            y=z;
+        scr.textContent='';
+    }
+    else{
+        y= scr.textContent;
+        y=parseFloat(y);
+        fun=4;
+        scr.textContent='';
+    }
 })
 btn20.addEventListener('click',function(){
     // square
     y= scr.textContent;
-    y=parseInt(y);
+    y=parseFloat(y);
     y=y*y;
     scr.textContent=y;
+    y=0;
  
 })
 btn21.addEventListener('click',function(){
     //root
     y= scr.textContent;
-    y=parseInt(y);
+    y=parseFloat(y);
     y=Math.sqrt(y);
     scr.textContent=y;
+    y=0;
    
 })
 
