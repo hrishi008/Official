@@ -44,14 +44,6 @@
     position: relative;
     z-index: -5;
 }
-.line-5{
-    background-image: url(../wrongSide/media/road.png);
-    height: 300px;
-    background-color: black;
-    background-size: contain;
-    z-index: -6;
-
-}
 .left{
     background-image: url(./media/left.png);
     background-size: contain;
@@ -104,17 +96,30 @@
     position: relative;
     z-index: -1;
 }
+.move2{
+    width: 65px;
+    margin-left: -14px;
+    animation: move2 9s infinite linear;
+    position: relative;
+    z-index: -1;
+}
+.move3{
+    width: 65px;
+    margin-left: -14px;
+    animation: move3 9s infinite linear;
+    position: relative;
+    z-index: -1;
+}
 .track{
     position: absolute;
     width: 10px;
     margin-left: -6px;
-    animation: move2 9s infinite linear;
+    animation: movex 9s infinite linear;
 }
 .track img{
    position: relative;
    z-index: -1;
 }
-
 @keyframes move {
     from{
         top: -876px
@@ -124,6 +129,22 @@
     }
 }
 @keyframes move2 {
+    from{
+        top: -876px
+    }
+    to{
+        top:267px;
+    }
+}
+@keyframes move3 {
+    from{
+        top: -200px
+    }
+    to{
+        top:267px;
+    }
+}
+@keyframes movex {
     from{
         top: -1076px
     }
@@ -135,4 +156,3 @@
     height: 1000px;
     z-index: 200;
 }
--5
