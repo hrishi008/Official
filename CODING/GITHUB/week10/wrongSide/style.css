@@ -1,3 +1,6 @@
+body{
+    height: 700px;
+}
 .box{
     margin-top: 60px;
     width: 360px;
@@ -10,10 +13,6 @@
 .h-600{
     height: 120px;
     background-color: black;
-    
-}
-.mycar{
-   
     
 }
 .line-1{
@@ -92,33 +91,23 @@
 .move{
     width: 65px;
     margin-left: -14px;
-    animation: move 9s infinite linear;
+    animation: move 16s infinite linear;
     position: relative;
     z-index: -1;
 }
 .move2{
     width: 65px;
     margin-left: -14px;
-    animation: move2 9s infinite linear;
+    animation: move2 7s infinite linear;
     position: relative;
     z-index: -1;
 }
 .move3{
     width: 65px;
     margin-left: -14px;
-    animation: move3 9s infinite linear;
+    animation: move3 7s infinite linear;
     position: relative;
     z-index: -1;
-}
-.track{
-    position: absolute;
-    width: 10px;
-    margin-left: -6px;
-    animation: movex 9s infinite linear;
-}
-.track img{
-   position: relative;
-   z-index: -1;
 }
 @keyframes move {
     from{
@@ -128,12 +117,24 @@
         top:267px;
     }
 }
+.track{
+    position: absolute;
+    z-index: -7;
+    width: 10px;
+    margin-left: -6px;
+    animation: movex 16s infinite linear;
+}
+.track img{
+   position: relative;
+   z-index: -1;
+}
+
 @keyframes move2 {
     from{
-        top: -876px
+        top: -843px
     }
     to{
-        top:267px;
+        top:300px;
     }
 }
 @keyframes move3 {
@@ -141,7 +142,7 @@
         top: -200px
     }
     to{
-        top:267px;
+        top:943px;
     }
 }
 @keyframes movex {
@@ -155,4 +156,78 @@
 .jagah2{
     height: 1000px;
     z-index: 200;
+}
+.move4{
+    width: 65px;
+    margin-left: -14px;
+    animation: move4 9s infinite linear;
+    position: relative;
+    z-index: -1;
+}
+@keyframes move4 {
+    from{
+        top: -876px
+    }
+    to{
+        top:267px;
+    }
+}
+.move5{
+    width: 65px;
+    margin-left: -14px;
+    animation: move5 9s infinite linear;
+    position: relative;
+    z-index: -1;
+}
+@keyframes move5 {
+    from{
+        top: -276px
+    }
+    to{
+        top:867px;
+    }
+}
+.move6{
+    width: 65px;
+    margin-left: -14px;
+    animation: move6 12s infinite linear;
+    position: relative;
+    z-index: -1;
+}
+@keyframes move6 {
+    from{
+        top: -276px
+    }
+    to{
+        top:867px;
+    }
+}
+.move7{
+    width: 65px;
+    margin-left: -14px;
+    animation: move3 12s infinite linear;
+    position: relative;
+    z-index: -1;
+}
+@keyframes move7 {
+    from{
+        top: -876px
+    }
+    to{
+        top:267px;
+    }
+}
+.mycar-1{
+    animation: shake 0.3s linear infinite;
+}
+@keyframes shake {
+    from{
+        margin-left: -10.25px;
+    }
+    to{
+        margin-left: -8.25px;
+    }
+}
+.margin{
+    margin-left: 110px;
 }

@@ -8,6 +8,7 @@ road1=road1.innerHTML;
 road2=road2.innerHTML;
 road3=road3.innerHTML;
 var position=2;
+const time=performance.now();
 left.addEventListener('click',function(){
     switch(position){
         case 1:
@@ -58,3 +59,27 @@ function move(){
             break;
     }
 }
+var dist1=document.querySelector('.move5');
+console.log(dist1);
+var start=document.querySelector('#start');
+start.addEventListener('click',function(){
+    var timenow=performance.now()-time;
+    timenow=parseInt(timenow/1000)
+    console.log(timenow);
+  
+})
+var timenow=performance.now()-time;
+timenow=parseInt(timenow/1000)
+console.log(timenow);
+if(timenow==7){
+    crash();
+}
+let p=0;
+
+var car1=document.querySelector('.mycar-1')
+function crash(){
+    car1.setAttribute('src','./media/crash.png');
+    console.log(car1.getAttribute('src'));
+}
+
+
