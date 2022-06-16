@@ -4,9 +4,13 @@ var road2=document.querySelector("#r2");
 var road3=document.querySelector("#r3");
 var left=document.querySelector(".left");
 var right=document.querySelector(".right");
+var all=document.querySelectorAll('img');
+var tracks=document.querySelectorAll('.track');
+var crash1=document.querySelector('#crash');
 road1=road1.innerHTML;
 road2=road2.innerHTML;
 road3=road3.innerHTML;
+var restarter=0;
 var position=2;
 const time=performance.now();
 left.addEventListener('click',function(){
@@ -24,9 +28,6 @@ left.addEventListener('click',function(){
             break;
             }
             return position;
-            
-
-
 })
 right.addEventListener('click',function(){
     switch(position){
@@ -41,6 +42,8 @@ right.addEventListener('click',function(){
         case 3:
         move();    
         break;
+        default:
+            break;
             }
             return position;
 
@@ -57,29 +60,123 @@ function move(){
         case 3:
             car.setAttribute('id','p3')
             break;
+        default:
+            break;
     }
 }
 var dist1=document.querySelector('.move5');
 console.log(dist1);
 var start=document.querySelector('#start');
+var pause=start.innerHTML;
+let i=0;
+let p=0;
+var pos=1000;
+var pos2=position;
+pause='Start';
+console.log(pause);
+while(i <=all.length-1){
+    all[i].style.animationPlayState='paused';
+    i++;
+}
+pos=position;
+position=10;
+while(p <=tracks.length-1){
+    tracks[p].style.animationPlayState='paused';
+    p++;
+}
+
 start.addEventListener('click',function(){
     var timenow=performance.now()-time;
     timenow=parseInt(timenow/1000)
-    console.log(timenow);
-  
+    console.log('passed time=',timenow);
+    switch(pause){
+        case'Start':
+        pause='Play▷ ';
+        console.log(pause);
+        car1.setAttribute('src','./media/mycar.png');
+        while(i <=all.length-1){
+            restarter= all[i].style.animation;
+            all[i].style.animation='none';
+            all[i].style.animation=restarter;
+            restarter=0;
+            all[i].style.animationPlayState='paused';
+            i++;
+           position=pos2;
+           pos=1000;
+        }
+        while(p <=tracks.length-1){
+            tracks[p].style.animationPlayState='paused';
+            p++;
+        }
+        break;
+        case'Pause':
+        pause='Play▷ ';
+        console.log(pause);
+        while(i <=all.length-1){
+            all[i].style.animationPlayState='paused';
+            i++;
+        }
+        pos=position;
+        position=10;
+        while(p <=tracks.length-1){
+            tracks[p].style.animationPlayState='paused';
+            p++;
+        }
+        break;
+        case'Play▷ ':
+        pause='Pause';
+        console.log(pause);
+        while(i <=all.length-1){
+            all[i].style.animationPlayState='running';
+            i++;
+           position=pos2;
+           pos=1000;
+        }
+        while(p <=tracks.length-1){
+            tracks[p].style.animationPlayState='running';
+            p++;
+        }
+        break;
+        
+    }
+   
+   
+    console.log(position,pos);
+    start.innerHTML=pause;
+    i=0;
+    p=0;
+    console.log(pause);
 })
 var timenow=performance.now()-time;
 timenow=parseInt(timenow/1000)
 console.log(timenow);
-if(timenow==7){
-    crash();
-}
-let p=0;
+
 
 var car1=document.querySelector('.mycar-1')
 function crash(){
     car1.setAttribute('src','./media/crash.png');
     console.log(car1.getAttribute('src'));
+    while(i <=all.length-1){
+        all[i].style.animationPlayState='paused';
+        i++;
+    }
+    pos=position;
+    position=10;
+    while(p <=tracks.length-1){
+        tracks[p].style.animationPlayState='paused';
+        p++;
+    }
+    pause='Start';
+    start.innerHTML=pause;
+
+    p=0;
+    i=0;
+    restarter=1;
+
 }
+crash1.addEventListener('click',function(){
+    crash();
+   
+})
 
 

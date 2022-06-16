@@ -224,6 +224,8 @@ body{
 }
 .mycar-1{
     animation: shake 0.3s linear infinite;
+    animation-play-state: running;
+
 }
 @keyframes shake {
     from{
@@ -235,4 +237,7 @@ body{
 }
 .margin{
     margin-left: 30px;
+}
+.w-x{
+    width: 239px;
 }
