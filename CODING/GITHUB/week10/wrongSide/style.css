@@ -1,3 +1,7 @@
+.fixing{
+    position: fixed;
+    top:0px;
+}
 body{
     width: 360px;
     height: 700px;
