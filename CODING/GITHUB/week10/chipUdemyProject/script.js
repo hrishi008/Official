@@ -15,7 +15,7 @@ var begin8=7;
 var begin9=7;
 var begin10=7;
 var player=0;
-var win=[];
+var win=[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3];
 var chipSet={
   col1 : [0,10,20,30,40,50,60,70],
   col2 : [1,11,21,31,41,51,61,71],
@@ -34,6 +34,7 @@ i=0;
  y=chipSet.col1[begin1];
           y=parseInt(y);
            if(player==0){
+            console.log(y);
              turn.innerText='it is p2`s tern';
     chips.eq(y).css('background-color','red');
     win[y]=1;
@@ -242,12 +243,8 @@ buttons.eq(1).click(function (){
           begin10--;
                   })
 let x=0;                                                                                    
-function check(){
-console.log(win[y]);
-}
-// for(y=0;y<=79;i++){
-//   if(win[y]==win[y+1]&&win[y]==win[y+2]&&win[y]==win[y+3]&&win[y]==0){
-//    alert('p1 w0n');
-//   }
-//  }
+// function check(){
+// if(w[]==w[]&&w[]==w[]&&w[]==w[]&&w[]==w[])
+// }
+
 
