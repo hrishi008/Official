@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        #night{
+            background-image: url(./media/night.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #morning{
+            background-image: url(./media/morning.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #afternoon{
+            background-image: url(./media/noon.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: rgb(219, 82, 82);
+        }
+        #evening{
+            background-image: url(./media/evening.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+    
+</head>
+<body id="night">
+    <div class="container text-center my-5 py-3 text-warning">
+        <h2 id="display">Press a Button</h2>
+        <div class="row">
+            <div class="col-4">
+                <button id="morning" class="btn btn-info" onclick="morning()">
+                    Morning
+                </button>
+            </div>
+            <div class="col-4">
+                <button id="afternoon" class="btn btn-light" onclick="afternoon()">
+                    Afternoon
+                </button>
+            </div>
+            <div class="col-4">
+                <button id="evening" class="btn btn-warning" onclick="evening()">
+                    Evening
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+         var background=document.getElementById('night');
+            var display=document.getElementById('display');
+        function morning(){
+           
+           
+            background.id='morning';
+            display.innerText='morning';
+        }
+        function afternoon(){
+           
+           
+            background.id='afternoon';
+            display.innerText='afternoon';
+        }
+        function evening(){
+           
+           
+            background.id='evening';
+            display.innerText='evening';
+        }
+    </script>
+</body>
+</html>

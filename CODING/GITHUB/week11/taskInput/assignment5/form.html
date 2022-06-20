@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="m-0 bg-success row p-2 align-items-center">
+        <div class="col-4"><h3><a href="" class="text-light text-decoration-none">Uncencored Engineers</a></h3></div>
+        <div class="col-3"></div>
+        <div class="col-3">
+            <a href="" class="text-light text-decoration-none mx-3">Form </a><a href="" class="text-light text-decoration-none mx-3"> Users</a>
+        </div>
+        <div class="col-2">
+            <a href="" class="btn btn-light p-1 m-0">Contact</a>
+        </div>
+    </nav>
+    <div class="container my-5 bg-dark p-3 rounded">
+        <h2 class="text-center text-light">Registration Form</h2>
+        <div class="row">
+            <div class="col-6">
+                <input type="text" class="form-control" id="fName" placeholder="First Name" >
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" id="lName" placeholder="Last Name" >
+            </div>
+        </div>
+        <input type="email" class="form-control my-3" id="email" placeholder="Email Address" >
+        <input type="password" class="form-control my-3" id="password" placeholder="Enter Password" >
+        <input type="text" class="form-control my-3" id="confirm" placeholder="Confirm Password" >
+        <button class="btn btn-success my3" id="submit" onclick="submitt()">Submit</button>
+    </div>
+    <div class="container bg-warning text-danger rounded p-3" id="users">
+        <h3>Our Users</h3>
+    </div>
+  
+    <script>
+   
+let i=1;
+function submitt(){
+    var fName=document.getElementById('fName');
+var lName=document.getElementById('lName');
+var email=document.getElementById('email');
+var password=document.getElementById('password');
+var cPassword=document.getElementById('confirm');
+var submit=document.getElementById('submit');
+var users=document.getElementById('users');
+    fName=fName.value;
+    lName=lName.value;
+    email=email.value;
+    password=password.value;
+    cPassword=cPassword.value;
+  if(password==cPassword){
+    users.innerHTML+=`<p>${i}. ${fName} ${lName}</p><br> `
+    console.log(i,fName,lName,email,password);
+    i++;
+  }
+  else{
+    alert('Password Does not match');
+  }
+}
+    </script>
+</body>
+</html>
