@@ -34,7 +34,6 @@ i=0;
  y=chipSet.col1[begin1];
           y=parseInt(y);
            if(player==0){
-            console.log(y);
              turn.innerText='it is p2`s tern';
     chips.eq(y).css('background-color','red');
     win[y]=1;
@@ -242,9 +241,89 @@ buttons.eq(1).click(function (){
   }
           begin10--;
                   })
-let x=0;                                                                                    
-// function check(){
-// if(w[]==w[]&&w[]==w[]&&w[]==w[]&&w[]==w[])
-// }
+let x=0;       
+                                                    
+function check(){
+  for(let z=70;z<77;z++){
+    if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+     if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+        }
+      }
+      for(let z=60;z<67;z++){
+        if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+         if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+            }
+          }
+          for(let z=50;z<57;z++){
+            if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+             if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+                }
+              }
+              for(let z=40;z<47;z++){
+                if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+                 if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+                    }
+                  }
+                  for(let z=30;z<37;z++){
+                    if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+                     if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+                        }
+                      }
+                      for(let z=20;z<27;z++){
+                        if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+                         if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+                            }
+                          }
+                          for(let z=10;z<17;z++){
+                            if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+                             if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+                                }
+                              }
+                              for(let z=0;z<7;z++){
+                                if(win[z]==win[z+1]&&win[z+1]==win[z+2]&&win[z+2]==win[z+3]&&win[z]!=3){
+                                 if(player==0){
+  alert('player 2 wins');
+}                        
+else{
+  alert('player 1 wins')
+} 
+                                    }
+                                  }
+                                }
 
 
