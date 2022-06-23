@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +15,7 @@
     
     <nav class="navbar navbar-expand-lg bg-light position-sticky top-0">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><h2 class="text-danger">Hrishi Kumawat</h2></a>
+          <a class="navbar-brand" href="#"><h2 class="text-danger" id="faded">Hrishi Kumawat</h2></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,9 +23,9 @@
             <div class="col-4"></div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <div class="col-3 col-md-4 d-flex ms-auto">
-                  <li class="nav-item float-r ">  <a href="" class="link-danger text-decoration-none mx-2">Resume</a></li>
-                  <li class="nav-item float-r ">  <a href="" class="link-danger text-decoration-none mx-2">Projects</a></li>
-                  <li class="nav-item float-r ">  <a href="" class="link-danger text-decoration-none mx-2">Upcomings</a></li>
+                  <li class="nav-item ">  <a href="" class="link-danger text-decoration-none mx-2">Resume</a></li>
+                  <li class="nav-item ">  <a href="" class="link-danger text-decoration-none mx-2">Projects</a></li>
+                  <li class="nav-item ">  <a href="" class="link-danger text-decoration-none mx-2">Upcomings</a></li>
                 </div>
             </ul>
             <a href="#contact" class="btn btn-outline-danger">Contact</a>
@@ -51,20 +53,20 @@
         </div>
        <div class="grid">
         <div class="row g-1">
-            <div class="col-4 bg-bag p-3 gx-5"><a href="" class="link-light text-decoration-none">Web devlopment</a></div>
-            <div class="col-4 bg-bag p-3 gx-5"><a href="" class="link-light text-decoration-none">Engineering</a></div>
-            <div class="col-4 bg-bag p-3 gx-5"><a href="" class="link-light text-decoration-none">Foundation</a></div>
+            <div class="col-4 bg-bag p-3 gx-5"><a href="#geekster" class="link-light text-decoration-none">Web devlopment</a></div>
+            <div class="col-4 bg-bag p-3 gx-5"><a href="#engineering" class="link-light text-decoration-none">Engineering</a></div>
+            <div class="col-4 bg-bag p-3 gx-5"><a href="#foundation" class="link-light text-decoration-none">Foundation</a></div>
         </div>
         <div class="row g-1">
-            <div class="col-4 bg-bag p-3 gx-5"><a href="" class="link-light text-decoration-none">Senior secondary</a></div>
-            <div class="col-4 bg-bag p-3 gx-5"><a href="" class="link-light text-decoration-none">Secondary</a></div>
-            <div class="col-4 bg-bag p-3 gx-5"><a href="" class="link-light text-decoration-none">Placements</a></div>
+            <div class="col-4 bg-bag p-3 gx-5"><a href="#twelfth" class="link-light text-decoration-none">Senior secondary</a></div>
+            <div class="col-4 bg-bag p-3 gx-5"><a href="#tenth" class="link-light text-decoration-none">Secondary</a></div>
+            <div class="col-4 bg-bag p-3 gx-5"><a href="#placement" class="link-light text-decoration-none">Placements</a></div>
         </div>
       </div>
        </div>
        <br>
  <!-- web devlopment  -->
- <div class="container-fluid bg-danger row align-items-center p-5">
+ <div class="container-fluid bg-danger row align-items-center p-5" id="geekster">
    
     <div class="col-6 text-white">
         <h2>
@@ -92,7 +94,7 @@
   </div>
  <br>
   <!-- Collage-->
-  <div class="container-fluid bg-danger row align-items-center p-5">
+  <div class="container-fluid bg-danger row align-items-center p-5" id="engineering">
     <div class="col-6">
         <img src="./media/college.png" alt="" class="img-fluid">
     </div>
@@ -125,7 +127,7 @@
 </div>
 <!-- Foundation-->
 
-    <div class="container-fluid bg-danger row align-items-center p-5">
+    <div class="container-fluid bg-danger row align-items-center p-5" id="foundation">
        
         <div class="col-6 text-white">
             <h2>
@@ -156,7 +158,7 @@
      </div>
 <br>
      <!-- 12th ,í-->
-    <div class="container-fluid bg-danger row align-items-center p-5">
+    <div class="container-fluid bg-danger row align-items-center p-5" id="twelfth">
         <div class="col-6">
             <img src="./media/board12.png" alt="" class="img-fluid">
         </div>
@@ -187,7 +189,7 @@
      
 <br>
      <!-- 10th ,í-->
-    <div class="container-fluid bg-danger row align-items-center p-5">
+    <div class="container-fluid bg-danger row align-items-center p-5" id="tenth">
       
         <div class="col-6 text-white">
             <h2>
@@ -241,7 +243,7 @@
             <div class="col-4 text-end">
                 <ul type="none">
                     <li>
-                        <a class="text-decoration-none text-white-50" href="7665155564">Hrshi Kumawat</a>
+                        <a class="text-decoration-none text-white-50" href="7665155564">Hrishi Kumawat</a>
                     </li> 
                     <li>
                         <a class="text-decoration-none text-white-50" href="https://chat.whatsapp.com/JvJOcZX2KaGIoPQAtLmaj5">s/o Ghanshyam Kumawat</a>
