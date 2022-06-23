@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreateElement</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script>
+        var i=1;
+        var user=document.getElementById('userD');
+
+            
+
+        function tableMaker(){
+            var fname=document.getElementById('fName');
+            var cName=document.getElementById('cName');
+            var mNumber=document.getElementById('mNumber');
+            var image=document.getElementById('file');
+            var seriolno=document.createElement('td');
+            var imageRef=document.createElement('td');
+            var myImage=document.createElement('img');
+            var nameRef=document.createElement('td');
+            var cityRef=document.createElement('td');
+            var mNumberRef=document.createElement('td');
+            var row=document.createElement('tr');
+        document.getElementById('userD').appendChild(row);
+        row.setAttribute('id','userData');
+        document.getElementById('userData').appendChild(seriolno);
+        document.getElementById('userData').appendChild(imageRef);
+        document.getElementById('userData').appendChild(nameRef);
+        document.getElementById('userData').appendChild(cityRef);
+        document.getElementById('userData').appendChild(mNumberRef);
+            seriolno.innerText=i;i++;
+            imageRef.setAttribute('id','image');
+            document.getElementById('image').appendChild(myImage);
+            myImage.setAttribute('src','img.png');
+            myImage.style.width='50px'
+            nameRef.innerText=fname.value;
+            cityRef.innerText=cName.value;
+            mNumberRef.innerText=mNumber.value;
+            row.setAttribute('id','');
+            imageRef.setAttribute('id','');
+            }
+            function show(){
+                var myTable= document.getElementById('userD');
+                var showButton=document.getElementById('show');
+                var hideButton=document.getElementById('hide');
+                showButton.disabled=true;
+                hideButton.disabled=false;
+                myTable.style.display='';
+            }
+            function hide(){
+                var myTable= document.getElementById('userD');
+                var hideButton=document.getElementById('hide');
+                var showButton=document.getElementById('show');
+
+                showButton.disabled=false;
+                hideButton.disabled=true;
+                myTable.style.display='none';
+            }
+    </script>
+</head>
+<body>
+    <nav class="navbar nav navbar-dark bg-dark">
+        <a href="" class="navbar-brand mx-5">Geekster</a>
+        <ul class="nav">
+            <li class="nav-item text-white mx-4">Home</li>
+            <li class="nav-item text-white mx-4">Users</li>
+            <li class="nav-item text-white mx-4">About</li>
+            <li class="nav-item text-white mx-4">Contact Us</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <br><br>
+        <h4>Geekster</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus reiciendis mollitia architecto! Iure, porro! Earum est alias minima quisquam eius, delectus facilis nisi qui, corporis consequuntur ad! Aperiam quam atque, dolor id debitis magni voluptatem mollitia omnis. Perspiciatis minima at libero ratione eius laudantium inventore ipsum provident repudiandae veniam cumque quam voluptates quasi rerum quis velit maiores in consequuntur sequi voluptas dolor, tenetur ea. Tempore facere blanditiis fugit? Officiis, consectetur!</p>
+    </div>
+    <br>
+    <div class="container my-5 text-center p-4 border rounded">
+        <input type="text" class="form-control m-2" placeholder="Enter Full Name" id="fName">
+        <input type="text" class="form-control m-2" placeholder="Enter City" id="cName">
+        <input type="text" class="form-control m-2" placeholder="Enter Phone" id="mNumber">
+        <input type="file" class="btn btn-secondary m-2" id="file">
+        <br>
+        <button class="btn btn-primary m-2" onclick="tableMaker()">Submit</button>
+        <br>
+       <div class="container border rounded">
+        <h3>Users</h3>
+        <br>
+        <div class="row m-4">
+            <div class="col-2"><input class="btn btn-secondary" onclick="show()" type="submit" value='show' disabled id="show"/></div>
+            <div class="col-2"><input class="btn btn-secondary" onclick="hide()" type="submit" value='hide'
+                id="hide"/></div>
+        </div>
+        <table class="table table-dark table-striped-columns table-hover text-dark" id="userD">
+            <thead class="text-white">
+                <td>S. no</td>
+                <td>Image</td>
+                <td>Name</td>
+                <td>City</td>
+                <td>Contact</td>
+            </thead>
+        </table>
+       </div>
+    </div>
+</body>
+</html>
