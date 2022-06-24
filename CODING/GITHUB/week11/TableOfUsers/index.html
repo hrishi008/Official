@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreateElement</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script>
+     var userData=[{
+        img:'https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg',
+        name:'James Chadwik',
+        gender:'male',
+        city:'banglore',
+        email:'james@gmail.com'
+     },
+     {
+        img:'http://www.classicaloasis.com/wp-content/uploads/2014/03/profile-square.jpg',
+        name:'Maxwell Kedmin',
+        gender:'male',
+        city:'Hydrabad',
+        email:'maxwell@gmail.com'
+     },
+     {
+        img:'https://nanny.org/wp-content/uploads/2021/11/profile-square.jpeg',
+        name:'Monica Bert',
+        gender:'female',
+        city:'Delhi',
+        email:'monica@gmail.com'
+     },
+     {
+        img:'https://www.silverstripe.org/assets/Uploads/Sacha-Judd-profile-square.jpg',
+        name:'Ruth rossel',
+        gender:'female',
+        city:'Jaipur',
+        email:'ruth@gmail.com'
+     }
+    ]
+
+            
+
+      
+            function show(){
+                var dataTable= document.getElementById('userD');
+                var showButton=document.getElementById('show');
+                var hideButton=document.getElementById('hide');
+                showButton.disabled=true;
+                hideButton.disabled=false;
+                dataTable.style.display='';
+
+
+
+
+                
+
+                userData.map(function my(ele,i){
+
+                    var myTable= document.getElementById('userData');
+     var row=document.createElement('tr');
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var td3=document.createElement('td');
+     var td4=document.createElement('td');
+     var td5=document.createElement('td');
+     var image=document.createElement('img');
+                    image.src=userData[i].img;
+     image.width=50;
+     image.height=50;
+     td2.innerText=userData[i].name;
+     td3.innerText=userData[i].gender;
+     td4.innerText=userData[i].city;
+     td5.innerText=userData[i].email;
+     td1.appendChild(image);
+     row.appendChild(td1);
+     row.appendChild(td2);
+     row.appendChild(td3);
+     row.appendChild(td4);
+     row.appendChild(td5);
+    myTable.appendChild(row);
+                })
+            }
+            function hide(){
+                var dataTable= document.getElementById('userD');
+                var hideButton=document.getElementById('hide');
+                var showButton=document.getElementById('show');
+
+                showButton.disabled=false;
+                hideButton.disabled=true;
+                dataTable.style.display='none';
+            }
+    </script>
+</head>
+<body>
+    <nav class="navbar nav navbar-dark bg-dark">
+        <a href="" class="navbar-brand mx-5">Geekster</a>
+        <ul class="nav">
+            <li class="nav-item text-white mx-4">Home</li>
+            <li class="nav-item text-white mx-4">Users</li>
+            <li class="nav-item text-white mx-4">About</li>
+            <li class="nav-item text-white mx-4">Contact Us</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <br><br>
+        <h4>Geekster</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus reiciendis mollitia architecto! Iure, porro! Earum est alias minima quisquam eius, delectus facilis nisi qui, corporis consequuntur ad! Aperiam quam atque, dolor id debitis magni voluptatem mollitia omnis. Perspiciatis minima at libero ratione eius laudantium inventore ipsum provident repudiandae veniam cumque quam voluptates quasi rerum quis velit maiores in consequuntur sequi voluptas dolor, tenetur ea. Tempore facere blanditiis fugit? Officiis, consectetur!</p>
+    </div>
+    <br>
+    <div class="container my-5 text-center p-4 border rounded">
+      
+       <div class="container border rounded">
+        <h3>Users</h3>
+        <br>
+        <div class="row m-4">
+            <div class="col-2"><input class="btn btn-secondary" onclick="show()" type="submit" value='show' disabled id="show"/></div>
+            <div class="col-2"><input class="btn btn-secondary" onclick="hide()" type="submit" value='hide'
+                id="hide"/></div>
+        </div>
+       <div class="container" id="userD">
+        <input type="radio" name="gender" class="ms-5 radios"> <label for="gender">All</label>
+        <input type="radio" name="gender" class="ms-5 radios"> <label for="gender">Male</label>
+        <input type="radio" name="gender" class="ms-5 radios"> <label for="gender">Female</label>
+        <table class="table table-dark table-striped table-hover text-dark" id="userData">
+      
+            <thead class="text-white">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>City</th>
+                <th>Email</th>
+            </thead>
+
+        </table>
+       </div>
+       </div>
+    </div>
+</body>
+</html>
