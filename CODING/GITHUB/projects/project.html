@@ -8,8 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    
+   
+   
     
 </head>
 <body>
@@ -21,7 +21,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="col-4"></div>
+            <div class="col-6"></div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <div class="col-3 col-md-4 d-flex ms-auto">
                   <li class="nav-item ">  <a href="../blog/blog.html" class="link-danger text-decoration-none mx-2">Blog</a></li>
@@ -35,21 +35,21 @@
       </nav>
       <!-- projects  -->
         <h2 class="m-3 text-center text-dark text-decoration-underline mb-5">Select one catagory</h2>
-        <div class="row g-2">
-            <div class="col-4">
-                <a href="" class="btn btn-danger-outline">
+        <div class="row g-0" >
+            <div class="col-4" onclick="javascript()">
+                <buttton href="" class="btn btn-danger-outline">
                     <img src="./media/javascript.png" alt="" class="img-fluid">
-                </a>
+                </button>
             </div>
-            <div class="col-4">
-                <a href="" class="btn btn-danger-outline">
+            <div class="col-4" onclick="bootstrap()">
+                <buttton href="" class="btn btn-danger-outline">
                     <img src="./media/bootsrap.png" alt="" class="img-fluid">
-                </a>
+                </button>
             </div>
-            <div class="col-4">
-                <a href="" class="btn btn-danger-outline">
-                    <img src="./media/css.png" alt="" class="img-fluid">
-                </a>
+            <div class="col-4" onclick="cssxx()">
+                <buttton href="" class="btn btn-danger-outline">
+                    <img src="./media/css.png" alt="" class="img-fluid" >
+                </button>
             </div>
         </div>
         <h2 class="m-3 text-center text-dark text-decoration-underline my-5">Pick One project</h2>
@@ -222,15 +222,15 @@
             <p>projectName</p></a>
           </div>
           <div class="col-4">
-            <a href="" class="btn btn-secondary-outline">  <img src="./media/project.jpg" alt="" class="projectimg img-fluid"><br>
+            <a class="btn btn-secondary-outline">  <img src="./media/project.jpg" alt="" class="projectimg img-fluid"><br>
             <p>projectName</p></a>
           </div>
           <div class="col-4">
-            <a href="" class="btn btn-secondary-outline">  <img src="./media/project.jpg" alt="" class="projectimg img-fluid"><br>
+            <a class="btn btn-secondary-outline">  <img src="./media/project.jpg" alt="" class="projectimg img-fluid"><br>
             <p>projectName</p></a>
           </div>
           <div class="col-4">
-            <a href="" class="btn btn-secondary-outline">  <img src="./media/project.jpg" alt="" class="projectimg img-fluid"><br>
+            <a class="btn btn-secondary-outline">  <img src="./media/project.jpg" alt="" class="projectimg img-fluid"><br>
             <p>projectName</p></a>
           </div>
                 
@@ -242,22 +242,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <!-- footer  -->
       <div class="container-fluid text-danger  bg-dark mt-0">
         <div class="row p-5">
@@ -306,6 +290,26 @@
                 Thank You For Visiting My Website
             </div>
         </div>
-        <script src="script.js"></script>
+        <script>
+          var javascriptGet=document.getElementById('javascript');
+          var bootstrapGet=document.getElementById('bootstrap');
+          var cssGet=document.getElementById('css');
+    
+          function javascript(){
+            javascriptGet.style.display='';
+            bootstrapGet.style.display='none';
+            cssGet.style.display='none';
+          }
+          function bootstrap(){
+            javascriptGet.style.display='none';
+            bootstrapGet.style.display='';
+            cssGet.style.display='none';
+          }
+          function cssxx(){
+            javascriptGet.style.display='none';
+            bootstrapGet.style.display='none';
+            cssGet.style.display='';
+          }
+        </script>
 </body>
 </html>

@@ -37,7 +37,15 @@
      }
     ]
 
-            
+            function showMale(){
+               x=userData;
+               userData=userData.filter(male);
+                function male(){
+                    return this.gender='male';
+                }
+                hide();
+                show();
+            }
 
       
             function show(){
@@ -47,12 +55,6 @@
                 showButton.disabled=true;
                 hideButton.disabled=false;
                 dataTable.style.display='';
-
-
-
-
-                
-
                 userData.map(function my(ele,i){
 
                     var myTable= document.getElementById('userData');
@@ -78,15 +80,21 @@
      row.appendChild(td5);
     myTable.appendChild(row);
                 })
+                
             }
             function hide(){
                 var dataTable= document.getElementById('userD');
                 var hideButton=document.getElementById('hide');
                 var showButton=document.getElementById('show');
-
+                var row=document.querySelectorAll('tr')
                 showButton.disabled=false;
                 hideButton.disabled=true;
                 dataTable.style.display='none';
+                userData.map(function my(ele,i){
+
+var myTable= document.getElementById('userData');
+row[i].remove();
+})
             }
     </script>
 </head>
@@ -117,9 +125,9 @@
                 id="hide"/></div>
         </div>
        <div class="container" id="userD">
-        <input type="radio" name="gender" class="ms-5 radios"> <label for="gender">All</label>
-        <input type="radio" name="gender" class="ms-5 radios"> <label for="gender">Male</label>
-        <input type="radio" name="gender" class="ms-5 radios"> <label for="gender">Female</label>
+        <input type="radio" name="gender" class="ms-5 radios" onclick="showAll()"> <label for="gender">All</label>
+        <input type="radio" name="gender" class="ms-5 radios" onclick="showMale()"> <label for="gender">Male</label>
+        <input type="radio" name="gender" class="ms-5 radios" onclick="showFemale()"> <label for="gender">Female</label>
         <table class="table table-dark table-striped table-hover text-dark" id="userData">
       
             <thead class="text-white">
