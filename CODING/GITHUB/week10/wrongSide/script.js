@@ -38,7 +38,7 @@ right.addEventListener('click',function(){
         case 2:
             position=3;
             move();
-            break;
+            break; 
         case 3:
         move();    
         break;
@@ -65,7 +65,6 @@ function move(){
     }
 }
 var dist1=document.querySelector('.move5');
-console.log(dist1);
 var start=document.querySelector('#start');
 var pause=start.innerHTML;
 let i=0;
@@ -73,7 +72,6 @@ let p=0;
 var pos=1000;
 var pos2=position;
 pause='Start';
-console.log(pause);
 while(i <=all.length-1){
     all[i].style.animationPlayState='paused';
     i++;
@@ -88,11 +86,9 @@ while(p <=tracks.length-1){
 start.addEventListener('click',function(){
     var timenow=performance.now()-time;
     timenow=parseInt(timenow/1000)
-    console.log('passed time=',timenow);
     switch(pause){
         case'Start':
         pause='Play▷ ';
-        console.log(pause);
         car1.setAttribute('src','./media/mycar.png');
         while(i <=all.length-1){
             restarter= all[i].style.animation;
@@ -111,7 +107,6 @@ start.addEventListener('click',function(){
         break;
         case'Pause':
         pause='Play▷ ';
-        console.log(pause);
         while(i <=all.length-1){
             all[i].style.animationPlayState='paused';
             i++;
@@ -125,7 +120,6 @@ start.addEventListener('click',function(){
         break;
         case'Play▷ ':
         pause='Pause';
-        console.log(pause);
         while(i <=all.length-1){
             all[i].style.animationPlayState='running';
             i++;
@@ -140,8 +134,6 @@ start.addEventListener('click',function(){
         
     }
    
-   
-    console.log(position,pos);
     start.innerHTML=pause;
     i=0;
     p=0;
@@ -155,7 +147,6 @@ console.log(timenow);
 var car1=document.querySelector('.mycar-1')
 function crash(){
     car1.setAttribute('src','./media/crash.png');
-    console.log(car1.getAttribute('src'));
     while(i <=all.length-1){
         all[i].style.animationPlayState='paused';
         i++;
@@ -176,7 +167,9 @@ function crash(){
 }
 crash1.addEventListener('click',function(){
     crash();
+    console.log(timenow);
    
 })
 
+// crash 
 

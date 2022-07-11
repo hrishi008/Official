@@ -173,7 +173,7 @@ body{
     position: relative;
     z-index: -1;
 }
-@keyframes move4 {
+@keyframes move4 { 
     from{
         top: -876px
     }

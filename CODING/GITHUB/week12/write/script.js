@@ -1,0 +1,1 @@
+function writeIt(){document.write('East');}
