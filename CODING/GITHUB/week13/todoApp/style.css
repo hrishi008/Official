@@ -1,0 +1,12 @@
+i:hover{
+    text-shadow: 0 0 5px green;
+}
+i:active{
+    color: yellow;
+}
+button:hover{
+    text-shadow: 0 0 5px green;
+}
+button:active{
+    text-shadow: 0 0 5px yellow;
+}

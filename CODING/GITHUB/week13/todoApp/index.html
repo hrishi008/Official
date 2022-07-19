@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="text-success">
+    <div class="container w-25 mt-5 border rounded border-success p-2">
+        <head><h3>ToDoApp</h3></head>
+        <button class="form-control text-success" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="cleanMe()" id="btnAdd">Add New Task <i class="bi bi-plus-square"></i></button>
+        <!-- heading for tasks  -->
+        <h4 class="text-center text-success">Tasks</h4>
+        <!-- prototype for the tasks  -->
+        <main>
+            <!-- to add new tasks  -->
+           
+           
+        </main>
+
+<!-- modal  --> 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Task Detials</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <label for="">Title</label>
+          <input type="text" class="form-control my-2" placeholder="Task Name" id="taskName">
+          <label for="">Due Date</label>
+          <input type="date" class="form-control my-2" id="taskDate">
+          <label for="">Description</label>
+          <textarea name="" class="form-control" id="taskDescription" cols="30" rows="10" ></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="addTaskButton"data-bs-dismiss="modal">Add Task</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
