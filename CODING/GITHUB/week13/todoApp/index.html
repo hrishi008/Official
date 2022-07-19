@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="text-success">
-    <div class="container w-25 mt-5 border rounded border-success p-2">
+    <div class="container w-25 mt-5 border rounded border-success p-2 bg-light">
         <head><h3>ToDoApp</h3></head>
         <button class="form-control text-success" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="cleanMe()" id="btnAdd">Add New Task <i class="bi bi-plus-square"></i></button>
         <!-- heading for tasks  -->
@@ -34,11 +34,11 @@
         </div>
         <div class="modal-body">
             <label for="">Title</label>
-          <input type="text" class="form-control my-2" placeholder="Task Name" id="taskName">
+          <input type="text" class="form-control my-2" placeholder="Task Name" id="taskName" required>
           <label for="">Due Date</label>
           <input type="date" class="form-control my-2" id="taskDate">
           <label for="">Description</label>
-          <textarea name="" class="form-control" id="taskDescription" cols="30" rows="10" ></textarea>
+          <textarea name="" class="form-control" id="taskDescription" cols="30" rows="10" required></textarea>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

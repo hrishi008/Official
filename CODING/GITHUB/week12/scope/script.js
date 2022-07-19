@@ -22,13 +22,7 @@ doit2=()=>{
 }
 doit2();
 doit();
-let obj1={y:100}
-let obj2={x:200}
-f1=()=>{
-    console.log(this.x);
-}
-f1.bind(obj2);
-f1();
+
 
 
  

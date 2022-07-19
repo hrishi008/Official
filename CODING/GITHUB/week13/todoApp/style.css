@@ -10,3 +10,7 @@ button:hover{
 button:active{
     text-shadow: 0 0 5px yellow;
 }
+body{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0eN2CbHBI80clCPPdcvDXNPbFwj-ufDbB_G8CYPWSwIYp9LAiTabSOEUxrkxF90hiKp8&usqp=CAU);
+    background-size:cover;
+}

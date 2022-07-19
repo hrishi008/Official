@@ -32,7 +32,7 @@ addTaskButton.addEventListener('click',function(){
 function displayDetials(){
 
     let i=0;
-    for(i=0;i<taskListArray.length;i++){
+    for(i=taskListArray.length-1;i>=0.;i--){
         document.querySelector('main').innerHTML+=` <div class="container border border-success rounded mx-auto my-2 bg-light">
         <h4>${taskListArray[i].taskName}</h4>
         <p class="text-muted">${taskDate.value}</p>
@@ -57,15 +57,15 @@ function deleteMe(i){
     displayDetials();
 }
 function editMe(i){
-    document.getElementById('btnAdd').setAttribute('data-bs-toggle','modal')
+    document.getElementById('btnAdd').setAttribute('data-bs-toggle','modal');
+    
     taskName.value=taskListArray[i].taskName;
     taskDate.value=taskListArray[i].taskDate;
     taskDescription.value=taskListArray[i].taskDescription;
-
-    taskListArray.splice(i,1,task);
+    deleteMe(i);
     console.log(taskListArray);
-    document.querySelector('main').innerHTML='';
-    displayDetials();
+
+    
 }
 function cleanMe(){
     taskName.value='';
