@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Search</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="light.css" id="style">
+</head>
+<body>
+    <div class="container mt-5 p-4 w-50 shadow">
+        <div class="row">
+            <div class="col-3 text-start devfinder">devfinder</div>
+            <div class="col-6"></div>
+            <div class="col-3 text-end theme" id="lightButton"><b style="cursor: pointer;">Light</b> <i class="bi bi-brightness-high text-warning"></i></div>
+        </div>
+        <div class="container mt-5 row align-items-center backsec p-2 rounded">
+           <div class="col-1"><i class="bi bi-search text-primary"></i></div> <div class="col-9"><input type="text" class="w-100 p-2 border-0 backsec" placeholder="Enter Name to Search" id="userName"></div><div class="col-2 text-end"><button class="btn btn-light text-primary" id="searchButton">search</button></div>
+        </div>
+        <div class="container mt-5 row align-items-center backsec p-2 rounded" id="content">
+           <div class="col-3 text-center">
+            <img src="https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg" alt="" class="mx-auto rounded-circle">
+           </div>
+           <div class="col-9">
+            <div class="row">
+                <div class="col-4">
+                    <h5><b>The Octacat</b></h5><br><a href="">@octacat</a>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-4"><p>joining <b>Date</b></p></div>
+            </div>
+            <div class="row text-center">
+                <p class="sec">bio not availabe</p>
+            </div>
+            <div class="row text-center back p-4 rounded">
+                <div class="col-4">
+                    <p class="sec">repos</p>
+                    <h6><b>6</b></h6>
+                </div>
+                <div class="col-4 border-start border-end border-secondary">
+                    <p class="sec">repos</p>
+                    <h6><b>6</b></h6>
+                </div>
+                <div class="col-4">
+                    <p class="sec">repos</p>
+                    <h6><b>6</b></h6>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-6">
+                    <p><i class="bi bi-geo-alt-fill"></i>sanfrancisco</p>
+                </div>
+                <div class="col-6">
+                    <p><i class="bi bi-twitter"></i>sanfrancisco</p>
+                </div>
+                <div class="col-6">
+                    <p><i class="bi bi-link-45deg"></i>sanfrancisco</p>
+                </div>
+                <div class="col-6">
+                    <p><i class="bi bi-building"></i>sanfrancisco</p>
+                </div>
+            </div>
+           </div>
+         </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

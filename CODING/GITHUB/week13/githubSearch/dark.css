@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+:root{
+    --background: rgb(29, 28, 48);
+    --backgroundsec: rgb(41, 40, 68);
+    --font: rgb(209, 204, 204);
+    --fontsec: rgb(137, 137, 143);
+    --font-family: 'Roboto Mono', monospace;
+}
+body{
+    font-family: var(--font-family);
+    background-color: var(--background);
+    color: var(--font);
+}
+.devfinder{
+    font-size: 22px;
+    font-weight:bolder;
+}
+.sec{
+    color: var(--fontsec);
+}
+.back{
+    background-color: var(--background);
+}
+.backsec{
+    background-color: var(--backgroundsec);
+}
+img{
+    width: 80%;
+    margin-top: -150px;
+    border: 5px solid blue;
+}
