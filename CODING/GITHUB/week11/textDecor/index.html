@@ -12,59 +12,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="m-5 row">
-        <div class="container-fluid fontbox row w-25 col-4">
-            <select name="" id="fontType col-12">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select>
-            <input type="number" id="fontSize" class="col-12">
-            <input type="color" id="fontColor" class="col-12">
+    <div class="container shadow m-5 p-2 bg-secondary rounded align-items-center">
+        <h2 class="text-center">TEXT-DECOR</h2>
+        <div class="m-5 row shadow bg-danger p-3 rounded">
+            <div class="container-fluid fontbox row col-4 rounded">
+                <select name="" id="fontType" class="rounded">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+                <input type="number" id="fontSize" class="rounded">
+                <input type="color" id="fontColor" class="rounded">
+            </div>
+            <div class="col-6"></div>
+            <div class="row ThreeButtons col-2">
+                <div class="col-4"><button class="btn btn-success textDecoration textDecorationBold"><b>B</b></button></div>
+                <div class="col-4"><button class="btn btn-success textDecoration textDecorationUnderline"><u>U</u></button></div>
+                <div class="col-4"><button class="btn btn-success textDecoration textDecorationItelic"><i>I</i></button></div>
         </div>
-        <div class="col-5"></div>
-        <div class="row ThreeButtons w-25 col-3">
-            <div class="col-4"><button class="textDecoration textDecorationBold"><b>B</b></button></div>
-            <div class="col-4"><button class="textDecoration textDecorationUnderline"><u>U</u></button></div>
-            <div class="col-4"><button class="textDecoration textDecorationItelic"><i>I</i></button></div>
-    </div>
-        <div class="container-fluid row">
-            <div class="col-6">
-                <h3>Frame Designs</h3>
-                <div class="col-2 frame1"></div>
-                <div class="col-2 frame2"></div>
-                <div class="col-2 frame3"></div>
-                <div class="col-2 frame4"></div>
-                <div class="col-2 frame5"></div>
+            <div class="row bg-warning rounded m-2 align-items-center">
+                <div class="col-6 border-end">
+                    <h3>Frame Designs</h3>
+                    <div class="col-2 frame1"></div>
+                    <div class="col-2 frame2"></div>
+                    <div class="col-2 frame3"></div>
+                    <div class="col-2 frame4"></div>
+                    <div class="col-2 frame5"></div>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="WaterMark" placeholder="Watermark" class="form-control my-2">
+                </div>
             </div>
-            <div class="col-6">
-                <h3>WaterMark</h3>
-                <input type="text" id="WaterMark">
+            <div class="container-fluid row align-items-center">
+                <div class="col-6">
+                   <input type="text" class="form-control enterTitle m-2" placeholder="Title">
+                </div>
+                <div class="col-6">
+                    <input type="date" class="enterDate form-control">
+                </div>
             </div>
-        </div>
-        <div class="container-fluid row">
-            <div class="col-6">
-               <input type="text" class="form-control enterTitle">
+            <textarea class="inputText bg-warning rounded p-2 my-2" placeholder="Enter text here"></textarea>
+           
+            <div class="row text-center">
+                <div class="col-6">
+                    <button class="btn btn-success">Apply</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-success">Save</button>
+                </div>
+                <div class="displayContent">
+                    <div class="container" id="display"></div>
+                </div>
             </div>
-            <div class="col-6">
-                <input type="date" class="enterDate">
-            </div>
-        </div>
-        <input type="text" class="form-control inputText">
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2" id="applyHere"></div>
-            <div class="col-2"></div>
-            <div class="col-2"></div>
-            <div class="col-2" id="saveHere"></div>
-            <div class="col-2"></div>
         </div>
     </div>
 </body>
