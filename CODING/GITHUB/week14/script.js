@@ -32,7 +32,8 @@ setTimeout(function(){
 },10000)
 setTimeout(function(){
     let i=0;
-    while(i==0){
-        btn.innerHTML+='10';
+    while(i<1){
+        btn.innerHTML+=i;
+        i=i+0.00000000001;
     }
 },11000)

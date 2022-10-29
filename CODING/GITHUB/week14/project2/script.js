@@ -1,5 +1,4 @@
-console.log('sucess');
-var a=['a','b','c','d','e','f','g',1,2,5,6,8,9,7,4];
-a.sort();
-a.join(".");
-console.log(a);
+// https://www.googleapis.com/books/v1/users/userId/bookshelves    
+// google user api practice
+let user='Favorites';
+fetch(`https://www.googleapis.com/books/v1/users/${user}/bookshelves`).then((res)=>res.json()).then((data)=>console.log(data)).catch((error)=>document.write('hiii')).finally(console.log('completed'));

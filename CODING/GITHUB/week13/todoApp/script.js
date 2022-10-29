@@ -1,5 +1,5 @@
 var addTaskButton=document.getElementById('addTaskButton');
-const taskListArray=[];
+var taskListArray=[];
 var counter=0;
 class TaskList{
     taskName;
@@ -24,12 +24,13 @@ addTaskButton.addEventListener('click',function(){
     var task= new TaskList(taskName.value,taskDate.value,taskDescription.value);
     task.addTask();
     taskListArray.push(task);
+    localStorage.setItem(taskName,taskName);
     console.log(taskListArray);
     document.querySelector('main').innerHTML='';
     displayDetials();
 
 })
-function displayDetials(){
+function displayDetials(){ 
 
     let i=0;
     for(i=taskListArray.length-1;i>=0.;i--){
