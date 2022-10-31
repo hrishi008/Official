@@ -11,7 +11,9 @@ for(let i=0;i<str.length;i++){
     listofdata.push(str[i]+' :'+price[i]+'<br>');
     document.getElementById('display').innerHTML+=str[i]+' :'+price[i]+'<br>';
 }
-
+if(str.length!=price.length){
+    document.getElementById('display').innerHTML=`<h1 style='color: red'>ERROR</h1>`;
+}
 
 }
 function sortname(){
@@ -34,6 +36,9 @@ for(let i=0;i<str.length;i++){
     }
     document.getElementById('display').innerHTML=listofdata.join('');
     console.log(listofdata.join('')); 
+    if(str.length!=price.length){
+        document.getElementById('display').innerHTML=`<h1 style='color: red'>ERROR</h1>`;
+    }
 
 }
 function sortprice(){
@@ -56,5 +61,8 @@ for(let i=0;i<str.length;i++){
     }
     document.getElementById('display').innerHTML=listofdata.join('');
     console.log(listofdata.join(''));
+    if(str.length!=price.length){
+        document.getElementById('display').innerHTML=`<h1 style='color: red'>ERROR</h1>`;
+    }
 
 }
