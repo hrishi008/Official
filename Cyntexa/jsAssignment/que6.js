@@ -5,8 +5,12 @@ const options = {
 		'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
 	}
 };
-
-fetch('https://booking-com.p.rapidapi.com/v1/hotels/nearby-cities?latitude=65.9667&longitude=-18.5333&locale=en-gb', options)
+function doit(){
+fetch(`https://booking-com.p.rapidapi.com/v1/hotels/locations?locale=en-gb&name=${document.getElementById('location').value}`, options)
 	.then(response => response.json())
-	.then(response => console.log(response))
+	.then(response =>{    for(a in response){
+        document.getElementById('display').innerText+=response[a].name;
+    }})
 	.catch(err => console.error(err));
+
+}
