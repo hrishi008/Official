@@ -5,17 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <button onclick="start()">start</button>
-    <div id="a"></div>
+    <div class="container">
+        <button onclick="addplayers()" >add players</button>
+        <input type="number" placeholder="Total Game Time">
+        <input type="number" placeholder="Total Game Time">
+        
+        <button onclick="start('a')">start</button>
+    </div><br><br><br>
+
+    <div class="row w-25 align-items-center">
+        <div class="col-5"></div>
+        <div class="col-2">
+            <div id="a"></div>
     <button onclick="stopMe('a');" id="A">Stop</button>
-    <div id="b"></div>
+    
+        </div>
+        <div class="col-5"></div>
+        <div class="col-2">
+            <div id="b"></div>
     <button onclick="stopMe('b');" id="B">Stop</button>
-    <div id="c"></div>
-    <button onclick="stopMe('c');" id="C">Stop</button>
-    <div id="d"></div>
+    
+        </div>
+        <div class="col-8">
+            <img src="./carrom.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-2">
+            <div id="d"></div>
     <button onclick="stopMe('d');" id="D">Stop</button>
-    <script src="que9.js"></script>
+    
+        </div>
+        <div class="col-5"></div>
+        <div class="col-2">
+            <div id="c"></div>
+    <button onclick="stopMe('c');" id="C">Stop</button>
+    
+        </div>
+        <div class="col-5"></div>
+    </div>
+     <script src="que9.js"></script>
 </body>
 </html>
