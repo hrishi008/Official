@@ -4,13 +4,17 @@ document.getElementById('A').disabled=true;
 document.getElementById('B').disabled=true;
 document.getElementById('C').disabled=true;
 document.getElementById('D').disabled=true;
+function breaks(){
+    clearInterval(invl);
+    
+}
 function start(){
     var totaltime=document.getElementById('totaltime').value;
     var breaktime=document.getElementById('breaktime').value;
     totaltime-=breaktime;
     var timeForA=totaltime/4*60*1000;
 var timeForB=totaltime/4*60*1000;var timeForC=totaltime/4*60*1000;var timeForD=totaltime/4*60*1000;
-    var t=10;
+    var t=10; 
         document.getElementById('a').innerHTML=timeForA/1000;
         invl=setInterval(()=>{document.getElementById('a').innerHTML='Total Time : '+(timeForA-1000)/1000+'Break Time :'+t;timeForA=timeForA-1000;t--;if(t==0){
             stopMe('a');
