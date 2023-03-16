@@ -27,7 +27,7 @@ function getRes(){
 myHeaders.append("Authorization", "Bearer 00D5i00000AGAyc!ARQAQEhtacdZEpznAaGuVwEX4mvda.WTNz6dSvP9niLl5q.BnzqVB9z8k8e0SBcQ8rBogan6gH761PlUQ79ueEru9J5wEFCx");
 myHeaders.append("Content-Type", "text/plain");
 myHeaders.append("Cookie", "BrowserId=i5NNmcPKEe27z-VvUVnttQ; CookieConsentPolicy=0:1; LSKey-c$CookieConsentPolicy=0:1");
-
+myHeaders.append( "mode", "no-cors",)
 let raw = "{\r\n    \"Heiahi\":\"nbsdm\"\r\n}";
 
 let requestOptions = {
