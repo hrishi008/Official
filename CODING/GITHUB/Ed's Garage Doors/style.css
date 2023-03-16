@@ -1,0 +1,18 @@
+.btn-specific{
+    background-color: rgb(44, 16, 113);
+    color:white;
+    font-weight: 500;
+    margin-right: 2pc;
+    padding: 0.5pc 10pc;
+    border-radius: 0%;
+}
+.btn-specific:hover{
+    background-color: rgb(67, 15, 196);
+    color:white;
+}
+.btn-specific:active{
+    background-color: rgb(7, 2, 20);
+    color:white;
+    box-shadow: none;
+    border: none;
+}
