@@ -24,7 +24,7 @@ fetch("https://login.salesforce.com/services/oauth2/token", requestOptions)
 let token ='00D5i00000AGAyc!ARQAQEhtacdZEpznAaGuVwEX4mvda.WTNz6dSvP9niLl5q.BnzqVB9z8k8e0SBcQ8rBogan6gH761PlUQ79ueEru9J5wEFCx';
 function getRes(){
     let myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer 00D5i00000AGAyc!ARQAQEhtacdZEpznAaGuVwEX4mvda.WTNz6dSvP9niLl5q.BnzqVB9z8k8e0SBcQ8rBogan6gH761PlUQ79ueEru9J5wEFCx");
+myHeaders.append("Authorization", "Bearer 6Cel800D5i00000AGAyc8885i00000110Dtf9O53BDNm2LKozUAv9jOHvGgifzFPSrJZFB1WyWN57lT1R0ZPtJv7vfsddT2pPj7eJPVhpyV");
 myHeaders.append("Content-Type", "text/plain");
 myHeaders.append("Cookie", "BrowserId=i5NNmcPKEe27z-VvUVnttQ; CookieConsentPolicy=0:1; LSKey-c$CookieConsentPolicy=0:1");
 myHeaders.append( "mode", "no-cors");
