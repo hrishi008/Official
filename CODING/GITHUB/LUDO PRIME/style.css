@@ -1,0 +1,12 @@
+.square{
+    width: 2vw;
+    height: 2vw;
+}
+.row{
+    width: 30vw;
+}
+.bg-star{
+    background-image: url('./media/image-removebg-preview.png');
+    background-position: center;
+    background-size: contain;
+}
