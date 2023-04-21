@@ -1,9 +1,9 @@
 .square{
-    width: 2vw;
-    height: 2vw;
+    width: 4vw;
+    height: 4vw;
 }
 .row{
-    width: 30vw;
+    width: 60vw;
 }
 .bg-star{
     background-image: url('./media/image-removebg-preview.png');
