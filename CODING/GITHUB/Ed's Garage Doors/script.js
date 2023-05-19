@@ -44,3 +44,8 @@ fetch("https://cyntexa96-dev-ed.my.salesforce.com/services/apexrest/craeteOrder/
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 }
+function ProductPage(){
+  fetch('./data.json')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}

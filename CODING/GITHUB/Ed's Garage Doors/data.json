@@ -1,0 +1,46 @@
+{
+    "ComponyDetails":{
+        "Name":"Ed's Garage Doors",
+        "Owner":"Hrishi Kumamwat"
+    },
+    "Catlog":{
+        "Products":[
+            {
+            "Name":"Door 1",
+            "Id":"01t5i0000012keDAAQ"
+            },{
+                "Name":"Door 2",
+                "Id":"01t5i0000012keNAAQ"
+            },{
+                "Name":"Door 3",
+                "Id":"01t5i0000012keIAAQ"
+            }
+        ],
+        "Services":[
+            {
+                "Name":"Service 1",
+                "Id":"01t5i0000012keEAAQ"
+            },{
+                "Name":"Service 2",
+                "Id":"01t5i0000012keJAAQ"
+            },{
+                "Name":"Service 3",
+                "Id":"01t5i0000012keKAAQ"
+            }
+        ]
+    },
+    "PriceBooks":[
+        {
+            "Name":"Diwali Coupen",
+            "Id":"01s5i000002D02qAAC"
+        },
+        {
+            "Name":"Standard",
+            "Id":"01s5i00000BRxFIAA1"
+        },
+        {
+            "Name":"Sellers",
+            "Id":"01s5i000002D02rAAC"
+        }
+    ]
+}
