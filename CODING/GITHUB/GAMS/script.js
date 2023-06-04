@@ -1,5 +1,5 @@
 // Make a REST callout to Salesforce REST API
-console.log(1);
+console.log(2);
 function callSalesforceREST() {
   var url = 'https://cyntexa96-dev-ed.my.salesforce.com/services/data/v52.0/query?q=SELECT+Id,Name+FROM+Account';
 
