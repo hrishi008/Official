@@ -10,7 +10,7 @@ function callSalesforceREST() {
   xhr.open('GET', url, true);
 
   // Set the request headers
-  xhr.setRequestHeader('Authorization', 'Bearer YOUR_ACCESS_TOKEN');
+  xhr.setRequestHeader('Authorization', 'Bearer 6Cel800D5i00000AGAyc8885i0000011p7g1v9umaJnuE5skkTKdptKBG7PyllwEZKeHYdsJguPPFrCausRa5T1LRUobrvasPuT7tA4aknH');
   xhr.setRequestHeader('Content-Type', 'application/json');
 
   // Set the callback function to handle the response
