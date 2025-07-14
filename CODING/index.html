@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +19,10 @@
             padding: 20px;
             box-sizing: border-box;
         }
+
         .survey-container {
-            background-color: #fff;
+            background-color: #f0f8ff;
+            /* Light blue background */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -28,57 +31,94 @@
             text-align: center;
             transition: all 0.3s ease-in-out;
         }
+
+        .brand-logo {
+            margin-bottom: 30px;
+            /* Placeholder for logo */
+        }
+
         h2 {
-            color: #333;
+            color: #2c3e50;
+            /* Darker blue text */
             font-weight: 600;
             margin-bottom: 10px;
+            font-size: 1.8em;
         }
+
         h3 {
             color: #333;
             font-weight: 600;
             margin-bottom: 25px;
         }
+
         p {
             color: #666;
             margin-bottom: 25px;
         }
+
         .nps-scale {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
+
         .nps-score {
             cursor: pointer;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 5px;
-            border: 2px solid #ddd;
-            border-radius: 50%;
+            border-radius: 8px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            color: white;
+            transition: all 0.2s ease;
+            border: none;
         }
+
+        .nps-score.red {
+            background-color: #e57373;
+        }
+
+        .nps-score.orange {
+            background-color: #ffb74d;
+        }
+
+        .nps-score.green {
+            background-color: #81c784;
+        }
+
         .nps-score:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .nps-score.selected {
-            background-color: #007bff;
-            color: #fff;
-            border-color: #007bff;
             transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            outline: 3px solid #3498db;
         }
+
+        .nps-labels {
+            display: flex;
+            justify-content: space-between;
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            color: #666;
+            font-size: 0.9em;
+        }
+
         .feedback-section {
             margin-top: 20px;
             text-align: left;
         }
+
         .question-category {
             margin-bottom: 30px;
         }
+
         .question-category h4 {
             margin-bottom: 15px;
             color: #333;
@@ -86,11 +126,13 @@
             padding-bottom: 8px;
             font-weight: 600;
         }
+
         .options-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
         }
+
         .options-grid label {
             background-color: #fff;
             padding: 15px;
@@ -102,10 +144,12 @@
             transition: all 0.3s ease;
             font-weight: 400;
         }
+
         .options-grid label:hover {
             border-color: #007bff;
             transform: translateY(-2px);
         }
+
         .options-grid input[type="checkbox"] {
             -webkit-appearance: none;
             appearance: none;
@@ -119,10 +163,12 @@
             top: -1px;
             transition: all 0.2s ease;
         }
+
         .options-grid input[type="checkbox"]:checked {
             background-color: #007bff;
             border-color: #007bff;
         }
+
         .options-grid input[type="checkbox"]:checked::after {
             content: '✔';
             color: white;
@@ -132,6 +178,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
+
         button {
             background: linear-gradient(to right, #007bff, #0056b3);
             color: #fff;
@@ -145,27 +192,50 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
         }
+
         button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
         }
+
         .hidden {
             display: none;
         }
-        #step-thank-you h2 {
-            font-size: 2.5em;
-            color: #007bff;
+
+        .thank-you-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        #step-thank-you-promoter .thank-you-icon {
+            color: #27ae60;
+        }
+
+        #step-thank-you-passive .thank-you-icon {
+            color: #f39c12;
+        }
+
+        #step-thank-you-detractor .thank-you-icon {
+            color: #e74c3c;
         }
     </style>
 </head>
+
 <body>
 
     <div class="survey-container">
+        <div class="brand-logo">
+            <!-- You can place your brand logo here -->
+            <h3>Your Brand Logo</h3>
+        </div>
         <!-- Step 1: NPS Score -->
         <div id="step-nps">
-            <h2>How likely are you to recommend us to a friend or colleague?</h2>
+            <h2>On a scale of 0 to 10, how likely are you to recommend our business to a friend or colleague?</h2>
             <div class="nps-scale"></div>
-            <p>0 = Not at all likely, 10 = Extremely likely</p>
+            <div class="nps-labels">
+                <span>0 - Not likely</span>
+                <span>10 - Very likely</span>
+            </div>
             <button id="nps-next-btn" class="hidden">Next</button>
         </div>
 
@@ -175,28 +245,40 @@
             <div class="question-category">
                 <h4>Product Availability / Variety</h4>
                 <div class="options-grid">
-                    <label><input type="checkbox" name="promoter_pa" value="wide_range"> Wide range of Apple products</label>
-                    <label><input type="checkbox" name="promoter_pa" value="stock_availability"> Stock availability</label>
-                    <label><input type="checkbox" name="promoter_pa" value="timely_restocking"> Timely restocking</label>
-                    <label><input type="checkbox" name="promoter_pa" value="good_accessories"> Good availability of accessories</label>
+                    <label><input type="checkbox" name="promoter_pa" value="wide_range"> Wide range of Apple
+                        products</label>
+                    <label><input type="checkbox" name="promoter_pa" value="stock_availability"> Stock
+                        availability</label>
+                    <label><input type="checkbox" name="promoter_pa" value="timely_restocking"> Timely
+                        restocking</label>
+                    <label><input type="checkbox" name="promoter_pa" value="good_accessories"> Good availability of
+                        accessories</label>
                 </div>
             </div>
             <div class="question-category">
                 <h4>Store Experience / Environment</h4>
                 <div class="options-grid">
-                    <label><input type="checkbox" name="promoter_se" value="well_organized"> Store was well-organized</label>
-                    <label><input type="checkbox" name="promoter_se" value="easy_access"> Easy access to products</label>
-                    <label><input type="checkbox" name="promoter_se" value="smooth_checkout"> Smooth and fast checkout</label>
-                    <label><input type="checkbox" name="promoter_se" value="clean_store"> Store was clean & well kept</label>
+                    <label><input type="checkbox" name="promoter_se" value="well_organized"> Store was
+                        well-organized</label>
+                    <label><input type="checkbox" name="promoter_se" value="easy_access"> Easy access to
+                        products</label>
+                    <label><input type="checkbox" name="promoter_se" value="smooth_checkout"> Smooth and fast
+                        checkout</label>
+                    <label><input type="checkbox" name="promoter_se" value="clean_store"> Store was clean & well
+                        kept</label>
                 </div>
             </div>
             <div class="question-category">
                 <h4>Staff Service</h4>
                 <div class="options-grid">
-                    <label><input type="checkbox" name="promoter_ss" value="knowledgeable"> Knowledgeable about products</label>
-                    <label><input type="checkbox" name="promoter_ss" value="helped_compare"> Helped with comparisons</label>
-                    <label><input type="checkbox" name="promoter_ss" value="handled_queries"> Handled queries efficiently</label>
-                    <label><input type="checkbox" name="promoter_ss" value="friendly_patient"> Friendly and patient</label>
+                    <label><input type="checkbox" name="promoter_ss" value="knowledgeable"> Knowledgeable about
+                        products</label>
+                    <label><input type="checkbox" name="promoter_ss" value="helped_compare"> Helped with
+                        comparisons</label>
+                    <label><input type="checkbox" name="promoter_ss" value="handled_queries"> Handled queries
+                        efficiently</label>
+                    <label><input type="checkbox" name="promoter_ss" value="friendly_patient"> Friendly and
+                        patient</label>
                 </div>
             </div>
             <button class="submit-btn">Submit</button>
@@ -208,37 +290,62 @@
             <div class="question-category">
                 <h4>Product Availability / Variety</h4>
                 <div class="options-grid">
-                    <label><input type="checkbox" name="detractor_pa" value="more_configs"> Include more configurations (color, storage)</label>
-                    <label><input type="checkbox" name="detractor_pa" value="better_models"> Better models/range of products</label>
-                    <label><input type="checkbox" name="detractor_pa" value="too_few_options"> Too few options across accessories</label>
-                    <label><input type="checkbox" name="detractor_pa" value="stock_out"> Stock-out of accessories</label>
+                    <label><input type="checkbox" name="detractor_pa" value="more_configs"> Include more configurations
+                        (color, storage)</label>
+                    <label><input type="checkbox" name="detractor_pa" value="better_models"> Better models/range of
+                        products</label>
+                    <label><input type="checkbox" name="detractor_pa" value="too_few_options"> Too few options across
+                        accessories</label>
+                    <label><input type="checkbox" name="detractor_pa" value="stock_out"> Stock-out of
+                        accessories</label>
                 </div>
             </div>
             <div class="question-category">
                 <h4>Store Experience / Environment</h4>
                 <div class="options-grid">
-                    <label><input type="checkbox" name="detractor_se" value="crowded"> Store was crowded/disorganized</label>
-                    <label><input type="checkbox" name="detractor_se" value="demo_not_functional"> Demo devices not functional</label>
-                    <label><input type="checkbox" name="detractor_se" value="long_wait"> Long wait or slow service</label>
+                    <label><input type="checkbox" name="detractor_se" value="crowded"> Store was
+                        crowded/disorganized</label>
+                    <label><input type="checkbox" name="detractor_se" value="demo_not_functional"> Demo devices not
+                        functional</label>
+                    <label><input type="checkbox" name="detractor_se" value="long_wait"> Long wait or slow
+                        service</label>
                     <label><input type="checkbox" name="detractor_se" value="not_clean"> Store was not clean</label>
                 </div>
             </div>
             <div class="question-category">
                 <h4>Staff Service</h4>
                 <div class="options-grid">
-                    <label><input type="checkbox" name="detractor_ss" value="lacked_knowledge"> Lacked product knowledge</label>
-                    <label><input type="checkbox" name="detractor_ss" value="inadequate_guidance"> Did not provide adequate guidance</label>
-                    <label><input type="checkbox" name="detractor_ss" value="slow_response"> Took too long to respond</label>
-                    <label><input type="checkbox" name="detractor_ss" value="not_courteous"> Not courteous or friendly</label>
+                    <label><input type="checkbox" name="detractor_ss" value="lacked_knowledge"> Lacked product
+                        knowledge</label>
+                    <label><input type="checkbox" name="detractor_ss" value="inadequate_guidance"> Did not provide
+                        adequate guidance</label>
+                    <label><input type="checkbox" name="detractor_ss" value="slow_response"> Took too long to
+                        respond</label>
+                    <label><input type="checkbox" name="detractor_ss" value="not_courteous"> Not courteous or
+                        friendly</label>
                 </div>
             </div>
             <button class="submit-btn">Submit</button>
         </div>
 
-        <!-- Step 3: Thank You Message -->
-        <div id="step-thank-you" class="hidden">
-            <h2>Thank you for your submission!</h2>
-            <p>We appreciate your feedback.</p>
+        <!-- Step 3: Dynamic Thank You Messages -->
+        <div id="step-thank-you-promoter" class="hidden">
+            <div class="thank-you-icon">😊</div>
+            <h2>Thanks for your positive feedback!</h2>
+            <p>We're thrilled that you're happy with our service. Your support means the world to us.</p>
+        </div>
+
+        <div id="step-thank-you-passive" class="hidden">
+            <div class="thank-you-icon">🙂</div>
+            <h2>Thank you for your feedback.</h2>
+            <p>We appreciate you taking the time to share your thoughts. We're always working to improve.</p>
+        </div>
+
+        <div id="step-thank-you-detractor" class="hidden">
+            <div class="thank-you-icon">😟</div>
+            <h2>Thank you for your feedback.</h2>
+            <p>We're sorry to hear you had a less than ideal experience. We take your comments seriously and will use
+                them to make improvements.</p>
         </div>
     </div>
 
@@ -248,7 +355,9 @@
                 nps: document.getElementById('step-nps'),
                 promoter: document.getElementById('step-promoter'),
                 detractor: document.getElementById('step-detractor'),
-                thankYou: document.getElementById('step-thank-you')
+                thankYouPromoter: document.getElementById('step-thank-you-promoter'),
+                thankYouPassive: document.getElementById('step-thank-you-passive'),
+                thankYouDetractor: document.getElementById('step-thank-you-detractor')
             };
 
             const npsScaleContainer = document.querySelector('.nps-scale');
@@ -261,6 +370,13 @@
             for (let i = 0; i <= 10; i++) {
                 let scoreEl = document.createElement('div');
                 scoreEl.className = 'nps-score';
+                if (i <= 6) {
+                    scoreEl.classList.add('red');
+                } else if (i <= 8) {
+                    scoreEl.classList.add('orange');
+                } else {
+                    scoreEl.classList.add('green');
+                }
                 scoreEl.textContent = i;
                 scoreEl.dataset.score = i;
                 npsScaleContainer.appendChild(scoreEl);
@@ -286,7 +402,7 @@
                 });
             });
 
-            npsNextBtn.addEventListener('click', function() {
+            npsNextBtn.addEventListener('click', function () {
                 if (selectedScore >= 9) {
                     showStep('promoter');
                 } else if (selectedScore >= 0) { // Scores 0-8
@@ -295,7 +411,7 @@
             });
 
             submitBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const feedback = {
                         npsScore: selectedScore,
                         promoter: {},
@@ -316,10 +432,16 @@
 
                     // Log the collected data
                     console.log('Collected Feedback:', JSON.stringify(feedback, null, 2));
-                    
+
                     // In a real implementation, you would send this 'feedback' object to your server or a Data Extension.
 
-                    showStep('thankYou');
+                    if (selectedScore >= 9) {
+                        showStep('thankYouPromoter');
+                    } else if (selectedScore >= 7) {
+                        showStep('thankYouPassive');
+                    } else {
+                        showStep('thankYouDetractor');
+                    }
                 });
             });
 
@@ -329,4 +451,5 @@
     </script>
 
 </body>
+
 </html>
