@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NPS Survey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -22,7 +23,6 @@
 
         .survey-container {
             background-color: #f0f8ff;
-            /* Light blue background */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -34,12 +34,10 @@
 
         .brand-logo {
             margin-bottom: 30px;
-            /* Placeholder for logo */
         }
 
         h2 {
             color: #2c3e50;
-            /* Darker blue text */
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 1.8em;
@@ -106,7 +104,7 @@
             justify-content: space-between;
             max-width: 650px;
             margin: 0 auto 20px auto;
-            color: #666;
+            color: #555;
             font-size: 0.9em;
         }
 
@@ -115,11 +113,98 @@
             text-align: left;
         }
 
-        .question-category {
-            margin-bottom: 30px;
+        .form-section {
+            margin-bottom: 35px;
+            text-align: left;
         }
 
-        .question-category h4 {
+        .form-section-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .card-picker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card i {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .card h4 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1em;
+            color: #333;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card.selected {
+            background-color: #e2efff;
+            border-color: #007bff;
+            color: #007bff;
+        }
+
+        .source-options label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="text"].other-source-input {
+            display: none;
+            margin-left: 28px;
+            margin-top: 5px;
+            width: calc(100% - 40px);
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="text"].other-source-input.visible {
+            display: block;
+        }
+
+        .contextual-question-group {
+            background-color: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .contextual-question-group h4 {
             margin-bottom: 15px;
             color: #333;
             border-bottom: 2px solid #f0f0f0;
@@ -127,56 +212,15 @@
             font-weight: 600;
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
+        .contextual-question-group .l2-question {
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
-        .options-grid label {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #eee;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 400;
-        }
-
-        .options-grid label:hover {
-            border-color: #007bff;
-            transform: translateY(-2px);
-        }
-
-        .options-grid input[type="checkbox"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            margin-right: 15px;
-            cursor: pointer;
-            position: relative;
-            top: -1px;
-            transition: all 0.2s ease;
-        }
-
-        .options-grid input[type="checkbox"]:checked {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .options-grid input[type="checkbox"]:checked::after {
-            content: '✔';
-            color: white;
-            font-size: 14px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+        .contextual-question-group .options-list label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: normal;
         }
 
         button {
@@ -193,7 +237,13 @@
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
         }
 
-        button:hover {
+        button:disabled {
+            background: #a9a9a9;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        button:hover:not(:disabled) {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
         }
@@ -202,21 +252,14 @@
             display: none;
         }
 
+        .thank-you-message {
+            padding: 40px 20px;
+        }
+
         .thank-you-icon {
             font-size: 4em;
             margin-bottom: 20px;
-        }
-
-        #step-thank-you-promoter .thank-you-icon {
-            color: #27ae60;
-        }
-
-        #step-thank-you-passive .thank-you-icon {
-            color: #f39c12;
-        }
-
-        #step-thank-you-detractor .thank-you-icon {
-            color: #e74c3c;
+            color: #007bff;
         }
     </style>
 </head>
@@ -225,227 +268,270 @@
 
     <div class="survey-container">
         <div class="brand-logo">
-            <img src="./ImagineLogo.png" alt="Imagine Logo" style="height: 36px;" />
-        </div>
-        <!-- Step 1: NPS Score -->
-        <div id="step-nps">
-            <h2>On a scale of 0 to 10, how likely are you to recommend our business to a friend or colleague?</h2>
-            <div class="nps-scale"></div>
-            <div class="nps-labels">
-                <span>0 - Not likely</span>
-                <span>10 - Very likely</span>
-            </div>
-            <button id="nps-next-btn" class="hidden">Next</button>
+            <img src="./ImagineLogo.png" alt="Imagine Logo" style="max-width: 150px;">
         </div>
 
-        <!-- Step 2: Promoter Questions (NPS 9-10) -->
-        <div id="step-promoter" class="feedback-section hidden">
-            <h3>What did you like the most about your experience?</h3>
-            <div class="question-category">
-                <h4>Product Availability / Variety</h4>
-                <div class="options-grid">
-                    <label><input type="checkbox" name="promoter_pa" value="wide_range"> Wide range of Apple
-                        products</label>
-                    <label><input type="checkbox" name="promoter_pa" value="stock_availability"> Stock
-                        availability</label>
-                    <label><input type="checkbox" name="promoter_pa" value="timely_restocking"> Timely
-                        restocking</label>
-                    <label><input type="checkbox" name="promoter_pa" value="good_accessories"> Good availability of
-                        accessories</label>
+        <!-- Step 1: Initial Questions -->
+        <div id="step-1">
+            <div class="form-section">
+                <h2>On a scale of 0 to 10, how likely are you to recommend our business?</h2>
+                <div class="nps-scale"></div>
+                <div class="nps-labels">
+                    <span>Not likely</span>
+                    <span>Very likely</span>
                 </div>
             </div>
-            <div class="question-category">
-                <h4>Store Experience / Environment</h4>
-                <div class="options-grid">
-                    <label><input type="checkbox" name="promoter_se" value="well_organized"> Store was
-                        well-organized</label>
-                    <label><input type="checkbox" name="promoter_se" value="easy_access"> Easy access to
-                        products</label>
-                    <label><input type="checkbox" name="promoter_se" value="smooth_checkout"> Smooth and fast
-                        checkout</label>
-                    <label><input type="checkbox" name="promoter_se" value="clean_store"> Store was clean & well
-                        kept</label>
-                </div>
+
+            <div class="form-section">
+                <div class="form-section-title">Please select the areas of your experience</div>
+                <div id="card-picker-container" class="card-picker"></div>
             </div>
-            <div class="question-category">
-                <h4>Staff Service</h4>
-                <div class="options-grid">
-                    <label><input type="checkbox" name="promoter_ss" value="knowledgeable"> Knowledgeable about
-                        products</label>
-                    <label><input type="checkbox" name="promoter_ss" value="helped_compare"> Helped with
-                        comparisons</label>
-                    <label><input type="checkbox" name="promoter_ss" value="handled_queries"> Handled queries
-                        efficiently</label>
-                    <label><input type="checkbox" name="promoter_ss" value="friendly_patient"> Friendly and
-                        patient</label>
-                </div>
+
+            <div class="form-section">
+                <div class="form-section-title">Where did you hear about us?</div>
+                <div id="source-container" class="source-options"></div>
             </div>
-            <button class="submit-btn">Submit</button>
+
+            <button id="next-btn" disabled>Next</button>
         </div>
 
-        <!-- Step 2: Detractor/Passive Questions (NPS 0-8) -->
-        <div id="step-detractor" class="feedback-section hidden">
-            <h3>What can we do to improve?</h3>
-            <div class="question-category">
-                <h4>Product Availability / Variety</h4>
-                <div class="options-grid">
-                    <label><input type="checkbox" name="detractor_pa" value="more_configs"> Include more configurations
-                        (color, storage)</label>
-                    <label><input type="checkbox" name="detractor_pa" value="better_models"> Better models/range of
-                        products</label>
-                    <label><input type="checkbox" name="detractor_pa" value="too_few_options"> Too few options across
-                        accessories</label>
-                    <label><input type="checkbox" name="detractor_pa" value="stock_out"> Stock-out of
-                        accessories</label>
-                </div>
-            </div>
-            <div class="question-category">
-                <h4>Store Experience / Environment</h4>
-                <div class="options-grid">
-                    <label><input type="checkbox" name="detractor_se" value="crowded"> Store was
-                        crowded/disorganized</label>
-                    <label><input type="checkbox" name="detractor_se" value="demo_not_functional"> Demo devices not
-                        functional</label>
-                    <label><input type="checkbox" name="detractor_se" value="long_wait"> Long wait or slow
-                        service</label>
-                    <label><input type="checkbox" name="detractor_se" value="not_clean"> Store was not clean</label>
-                </div>
-            </div>
-            <div class="question-category">
-                <h4>Staff Service</h4>
-                <div class="options-grid">
-                    <label><input type="checkbox" name="detractor_ss" value="lacked_knowledge"> Lacked product
-                        knowledge</label>
-                    <label><input type="checkbox" name="detractor_ss" value="inadequate_guidance"> Did not provide
-                        adequate guidance</label>
-                    <label><input type="checkbox" name="detractor_ss" value="slow_response"> Took too long to
-                        respond</label>
-                    <label><input type="checkbox" name="detractor_ss" value="not_courteous"> Not courteous or
-                        friendly</label>
-                </div>
-            </div>
-            <button class="submit-btn">Submit</button>
+        <!-- Step 2: Contextual Follow-up Questions -->
+        <div id="step-2" class="feedback-section hidden">
+            <h3 id="contextual-title"></h3>
+            <div id="contextual-questions-container"></div>
+            <button id="submit-btn">Submit Feedback</button>
         </div>
 
-        <!-- Step 3: Dynamic Thank You Messages -->
-        <div id="step-thank-you-promoter" class="hidden">
-            <div class="thank-you-icon">😊</div>
-            <h2>Thanks for your positive feedback!</h2>
-            <p>We're thrilled that you're happy with our service. Your support means the world to us.</p>
+        <!-- Step 3: Thank You Message -->
+        <div id="step-3" class="hidden">
+            <div id="thank-you-message-container" class="thank-you-message"></div>
         </div>
 
-        <div id="step-thank-you-passive" class="hidden">
-            <div class="thank-you-icon">🙂</div>
-            <h2>Thank you for your feedback.</h2>
-            <p>We appreciate you taking the time to share your thoughts. We're always working to improve.</p>
-        </div>
-
-        <div id="step-thank-you-detractor" class="hidden">
-            <div class="thank-you-icon">😟</div>
-            <h2>Thank you for your feedback.</h2>
-            <p>We're sorry to hear you had a less than ideal experience. We take your comments seriously and will use
-                them to make improvements.</p>
-        </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const steps = {
-                nps: document.getElementById('step-nps'),
-                promoter: document.getElementById('step-promoter'),
-                detractor: document.getElementById('step-detractor'),
-                thankYouPromoter: document.getElementById('step-thank-you-promoter'),
-                thankYouPassive: document.getElementById('step-thank-you-passive'),
-                thankYouDetractor: document.getElementById('step-thank-you-detractor')
+            // --- DATA ---
+            const feedbackData = {
+                experienceAreas: {
+                    product: { name: 'Product Availability / Variety', shortName: 'Product', icon: 'fas fa-shopping-basket' },
+                    store: { name: 'Store Experience / Environment', shortName: 'Store', icon: 'fas fa-store-alt' },
+                    staff: { name: 'Staff Service', shortName: 'Staff', icon: 'fas fa-user-friends' },
+                    value: { name: 'Value for Money', shortName: 'Value', icon: 'fas fa-dollar-sign' }
+                },
+                sources: ['SMS', 'Email', 'WABA', 'Social Media', 'Hoardings', 'Others'],
+                promoter: {
+                    'product': { question: 'What did you like about product availability?', options: ['Wide range of products', 'Availability across models', 'Accessories well-stocked'] },
+                    'store': { question: 'What made your store visit enjoyable?', options: ['Well-organized layout', 'Smooth checkout', 'Clean and helpful staff'] },
+                    'staff': { question: 'What impressed you about our staff?', options: ['Knowledgeable', 'Helped compare options', 'Efficient and friendly'] },
+                    'value': { question: 'Why was the purchase worth it?', options: ['Competitive pricing', 'Extra perks/services', 'Good exchange bonus'] }
+                },
+                detractor: {
+                    'product': { question: 'What could we improve about product availability?', options: ['Wider range of products', 'Better configurations', 'Too few accessories'] },
+                    'store': { question: 'What could be improved in-store?', options: ['Crowded/disorganized', 'Long wait times', 'Slow billing'] },
+                    'staff': { question: 'What could our staff have done better?', options: ['Lacked product knowledge', 'Unhelpful or slow', 'Not friendly'] },
+                    'value': { question: 'Why wasn\'t the purchase worth it?', options: ['Price higher than elsewhere', 'No extra service/benefit', 'Expensive bundles'] }
+                },
+                thankYouMessages: {
+                    promoter: { icon: '<i class="fas fa-glass-cheers"></i>', message: 'Thanks for the love! We’re thrilled you had a great experience.' },
+                    passive: { icon: '<i class="far fa-smile"></i>', message: 'Thanks for your feedback! We appreciate you taking the time.' },
+                    detractor: { icon: '<i class="fas fa-hands-helping"></i>', message: 'Thank you for your feedback. We\'re committed to improving.' }
+                },
             };
 
+            // --- STATE ---
+            let selectedScore = null;
+            let selectedCards = new Set();
+
+            // --- DOM Elements ---
+            const steps = { one: document.getElementById('step-1'), two: document.getElementById('step-2'), three: document.getElementById('step-3') };
             const npsScaleContainer = document.querySelector('.nps-scale');
-            const npsNextBtn = document.getElementById('nps-next-btn');
-            const submitBtns = document.querySelectorAll('.submit-btn');
+            const cardPickerContainer = document.getElementById('card-picker-container');
+            const sourceContainer = document.getElementById('source-container');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const contextualTitle = document.getElementById('contextual-title');
+            const contextualQuestionsContainer = document.getElementById('contextual-questions-container');
+            const thankYouMessageContainer = document.getElementById('thank-you-message-container');
 
-            let selectedScore = -1;
+            // --- INITIALIZATION ---
+            function initializeForm() {
+                // 1. Create NPS Scale
+                for (let i = 0; i <= 10; i++) {
+                    let scoreEl = document.createElement('div');
+                    scoreEl.className = 'nps-score';
+                    if (i <= 6) scoreEl.classList.add('red');
+                    else if (i <= 8) scoreEl.classList.add('orange');
+                    else scoreEl.classList.add('green');
+                    scoreEl.textContent = i;
+                    scoreEl.dataset.score = i;
+                    scoreEl.addEventListener('click', handleScoreSelect);
+                    npsScaleContainer.appendChild(scoreEl);
+                }
 
-            // Generate NPS scale
-            for (let i = 0; i <= 10; i++) {
-                let scoreEl = document.createElement('div');
-                scoreEl.className = 'nps-score';
-                if (i <= 6) {
-                    scoreEl.classList.add('red');
-                } else if (i <= 8) {
-                    scoreEl.classList.add('orange');
+                // 2. Create Experience Cards
+                for (const key in feedbackData.experienceAreas) {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.key = key;
+                    const area = feedbackData.experienceAreas[key];
+                    card.innerHTML = `<i class="${area.icon}"></i><h4>${area.name}</h4>`;
+                    card.addEventListener('click', handleCardSelect);
+                    cardPickerContainer.appendChild(card);
+                }
+
+                // 3. Create Source Options
+                feedbackData.sources.forEach(source => {
+                    const isOther = source === 'Others';
+                    const id = `source-${source.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+                    const label = document.createElement('label');
+                    label.setAttribute('for', id);
+                    label.innerHTML = `<input type="radio" name="source" id="${id}" value="${source}"> ${source}`;
+                    sourceContainer.appendChild(label);
+
+                    if (isOther) {
+                        const textInput = document.createElement('input');
+                        textInput.type = 'text';
+                        textInput.className = 'other-source-input';
+                        textInput.placeholder = 'Please specify';
+                        sourceContainer.appendChild(textInput);
+                    }
+                });
+            }
+
+            // --- EVENT HANDLERS & VALIDATION ---
+            function handleScoreSelect(e) {
+                selectedScore = parseInt(e.target.dataset.score, 10);
+                document.querySelectorAll('.nps-score').forEach(el => el.classList.remove('selected'));
+                e.target.classList.add('selected');
+                validateStep1();
+            }
+
+            function handleCardSelect(e) {
+                const card = e.currentTarget;
+                const key = card.dataset.key;
+                card.classList.toggle('selected');
+                if (selectedCards.has(key)) {
+                    selectedCards.delete(key);
                 } else {
-                    scoreEl.classList.add('green');
+                    selectedCards.add(key);
                 }
-                scoreEl.textContent = i;
-                scoreEl.dataset.score = i;
-                npsScaleContainer.appendChild(scoreEl);
+                validateStep1();
             }
 
-            const npsScores = document.querySelectorAll('.nps-score');
-
-            function showStep(stepName) {
-                Object.keys(steps).forEach(key => {
-                    if (steps[key]) steps[key].classList.add('hidden');
-                });
-                if (steps[stepName]) {
-                    steps[stepName].classList.remove('hidden');
+            sourceContainer.addEventListener('change', function (e) {
+                const otherInput = document.querySelector('.other-source-input');
+                if (e.target.value === 'Others') {
+                    otherInput.classList.add('visible');
+                } else {
+                    otherInput.classList.remove('visible');
                 }
+                validateStep1();
+            });
+
+            function validateStep1() {
+                const sourceSelected = !!document.querySelector('input[name="source"]:checked');
+                nextBtn.disabled = !(selectedScore !== null && selectedCards.size > 0 && sourceSelected);
             }
 
-            npsScores.forEach(score => {
-                score.addEventListener('click', function () {
-                    selectedScore = parseInt(this.dataset.score, 10);
-                    npsScores.forEach(s => s.classList.remove('selected'));
-                    this.classList.add('selected');
-                    npsNextBtn.classList.remove('hidden');
-                });
-            });
-
-            npsNextBtn.addEventListener('click', function () {
-                if (selectedScore >= 9) {
-                    showStep('promoter');
-                } else if (selectedScore >= 0) { // Scores 0-8
-                    showStep('detractor');
+            nextBtn.addEventListener('click', function () {
+                const userType = getUserType();
+                if (userType === 'passive') {
+                    collectAllData();
+                    showThankYouScreen();
+                } else {
+                    buildContextualQuestions(userType);
+                    steps.one.classList.add('hidden');
+                    steps.two.classList.remove('hidden');
                 }
             });
 
-            submitBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const feedback = {
-                        npsScore: selectedScore,
-                        promoter: {},
-                        detractor: {}
-                    };
-
-                    if (selectedScore >= 9) {
-                        document.querySelectorAll('#step-promoter input[type="checkbox"]:checked').forEach(cb => {
-                            if (!feedback.promoter[cb.name]) feedback.promoter[cb.name] = [];
-                            feedback.promoter[cb.name].push(cb.value);
-                        });
-                    } else {
-                        document.querySelectorAll('#step-detractor input[type="checkbox"]:checked').forEach(cb => {
-                            if (!feedback.detractor[cb.name]) feedback.detractor[cb.name] = [];
-                            feedback.detractor[cb.name].push(cb.value);
-                        });
-                    }
-
-                    // Log the collected data
-                    console.log('Collected Feedback:', JSON.stringify(feedback, null, 2));
-
-                    // In a real implementation, you would send this 'feedback' object to your server or a Data Extension.
-
-                    if (selectedScore >= 9) {
-                        showStep('thankYouPromoter');
-                    } else if (selectedScore >= 7) {
-                        showStep('thankYouPassive');
-                    } else {
-                        showStep('thankYouDetractor');
-                    }
-                });
+            submitBtn.addEventListener('click', function () {
+                collectAllData();
+                showThankYouScreen();
             });
 
-            // Initial state
-            showStep('nps');
+            // --- LOGIC & DOM MANIPULATION ---
+            function getUserType() {
+                if (selectedScore >= 9) return 'promoter';
+                if (selectedScore >= 7) return 'passive';
+                return 'detractor';
+            }
+
+            function buildContextualQuestions(userType) {
+                contextualTitle.textContent = userType === 'promoter'
+                    ? 'What did you like the most about your experience?'
+                    : 'What could we have done better?';
+
+                contextualQuestionsContainer.innerHTML = ''; // Clear previous
+                selectedCards.forEach(cardKey => {
+                    const questionData = feedbackData[userType][cardKey];
+                    if (!questionData) return;
+
+                    const group = document.createElement('div');
+                    group.className = 'contextual-question-group';
+                    group.dataset.cardKey = cardKey;
+
+                    const l1_prompt = `<h4>${feedbackData.experienceAreas[cardKey].shortName}</h4>`;
+                    const l2_question = `<div class="l2-question">${questionData.question}</div>`;
+                    const options_list = questionData.options.map((opt, index) => {
+                        const optionId = `option-${cardKey}-${index}`;
+                        return `<label for="${optionId}"><input type="checkbox" id="${optionId}" value="${opt}"> ${opt}</label>`;
+                    }).join('');
+
+                    group.innerHTML = `${l1_prompt}${l2_question}<div class="options-list">${options_list}</div>`;
+                    contextualQuestionsContainer.appendChild(group);
+                });
+            }
+
+            function showThankYouScreen() {
+                const userType = getUserType();
+                const thankYouData = feedbackData.thankYouMessages[userType];
+                thankYouMessageContainer.innerHTML = `
+                    <div class="thank-you-icon">${thankYouData.icon}</div>
+                    <h2>${thankYouData.message}</h2>
+                `;
+                steps.one.classList.add('hidden');
+                steps.two.classList.add('hidden');
+                steps.three.classList.remove('hidden');
+            }
+
+            function collectAllData() {
+                const sourceRadio = document.querySelector('input[name="source"]:checked');
+                let sourceValue = sourceRadio ? sourceRadio.value : 'Not provided';
+                if (sourceValue === 'Others') {
+                    sourceValue = `Other: ${document.querySelector('.other-source-input').value}`;
+                }
+
+                let detailedFeedback = [];
+                if (getUserType() !== 'passive') {
+                    detailedFeedback = Array.from(selectedCards).map(cardKey => {
+                        const group = document.querySelector(`.contextual-question-group[data-card-key="${cardKey}"]`);
+                        if (!group) return { area: feedbackData.experienceAreas[cardKey].name, responses: [] };
+
+                        const selectedOptions = Array.from(group.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+                        return {
+                            area: feedbackData.experienceAreas[cardKey].name,
+                            question: feedbackData[getUserType()][cardKey].question,
+                            responses: selectedOptions
+                        };
+                    });
+                }
+
+                const finalPayload = {
+                    npsScore: selectedScore,
+                    userType: getUserType(),
+                    experienceAreas: Array.from(selectedCards).map(key => feedbackData.experienceAreas[key].name),
+                    source: sourceValue,
+                    detailedFeedback: detailedFeedback
+                };
+
+                console.log("--- FINAL FEEDBACK PAYLOAD ---");
+                console.log(JSON.stringify(finalPayload, null, 2));
+            }
+
+            // --- START --- 
+            initializeForm();
         });
     </script>
 
