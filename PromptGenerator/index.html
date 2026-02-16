@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prompt Generator – Salesforce AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Salesforce Prompt Generator</h1>
+      <p class="subtitle">
+        Create high-quality prompts for AI assistants in VS Code.<br>
+        Describe your task → get a clean prompt ready to paste.
+      </p>
+    </header>
+
+    <main>
+      <form id="promptForm">
+        <label for="context">Context / Task / Code</label>
+        <textarea 
+          id="context" 
+          rows="8" 
+          placeholder="Describe what you need. Examples:&#10;• Fix this Apex class for bulkification&#10;• Add new validation in this Flow without breaking anything&#10;• Review this LWC for security&#10;• Write test class for this trigger"
+        ></textarea>
+
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="rules" value="best-practices"> Include Salesforce best practices</label>
+          <label><input type="checkbox" name="rules" value="no-break"> Do NOT break / change existing functionality</label>
+          <label><input type="checkbox" name="rules" value="anti-patterns"> Include what NOT to do (common mistakes)</label>
+          <label><input type="checkbox" name="rules" value="bulkified"> Make it bulkified & governor-limit safe</label>
+          <label><input type="checkbox" name="rules" value="step-by-step"> Write in detailed step-by-step style</label>
+          <label><input type="checkbox" name="rules" value="flow"> This is related to a Flow</label>
+          <label><input type="checkbox" name="rules" value="apex"> This is related to an Apex class / trigger</label>
+        </div>
+
+        <label for="extra">Additional comments / special instructions (optional)</label>
+        <textarea 
+          id="extra" 
+          rows="4" 
+          placeholder="Examples:&#10;• Only use async if really needed&#10;• Avoid DML in loops&#10;• Prefer Flow over code when possible&#10;• Keep under 200 lines"
+        ></textarea>
+
+        <div class="buttons">
+          <button type="button" id="generateBtn">Generate Prompt</button>
+          <button type="button" id="restartBtn">Restart</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <h2>Generated Prompt</h2>
+      <div class="prompt-output" id="promptOutput"></div>
+      <div class="modal-buttons">
+        <button id="copyBtn">Copy to Clipboard</button>
+        <button id="closeModal">Close</button>
+      </div>
+      <div id="copyMessage" class="copy-message">Copied to clipboard ✓</div>
+    </div>
+  </div>
+
+  <div id="spinner" class="spinner">
+    <div class="spinner-inner"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
