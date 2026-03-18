@@ -142,7 +142,9 @@ button:active {
   inset: 0;
   background: rgba(0,0,0,0.85);
   display: none;
-  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
 
@@ -209,4 +211,37 @@ button:active {
 
 .copy-message.show {
   opacity: 1;
+}
+
+.open-in-label {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  color: #88ff88;
+  font-size: 0.95rem;
+}
+
+.ai-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.ai-link {
+  display: inline-block;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  text-decoration: none;
+  border: 2px solid #00cc33;
+  border-radius: 6px;
+  background: transparent;
+  color: #00ff41;
+  transition: all 0.18s;
+}
+
+.ai-link:hover {
+  background: rgba(0,255,65,0.12);
+  box-shadow: 0 0 12px rgba(0,255,65,0.35);
+  color: #e0ffe0;
 }
