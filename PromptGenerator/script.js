@@ -31,9 +31,9 @@ function buildPrompt() {
     : "";
 
   const outputFormat = " Please respond in structured paragraphs only (no bullet or numbered lists), and be concise.";
+  const wantPromptOnly = " Do not give me the solution — give me only a prompt that I can paste into Cursor or Vibes to get the solution.";
 
-  // This is the prompt only — user pastes it into Cursor; Cursor then gives the solution.
-  let prompt = `I need help with: ${context} This is ${type}. Scope: ${scope}. I plan to deploy: ${deploy}. I need: ${deliverable}.${rulesBlock}${extra ? " " + extra : ""}${outputFormat}`;
+  let prompt = `I need help with: ${context} This is ${type}. Scope: ${scope}. I plan to deploy: ${deploy}. I need: ${deliverable}.${rulesBlock}${extra ? " " + extra : ""}${outputFormat}${wantPromptOnly}`;
 
   return prompt.trim();
 }
