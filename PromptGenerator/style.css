@@ -66,23 +66,125 @@ textarea:focus {
   box-shadow: 0 0 8px rgba(0,255,65,0.4);
 }
 
-.checkbox-group {
-  margin: 24px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px 20px;
+/* Option groups – pill toggle buttons (single choice) */
+.option-group {
+  margin: 20px 0;
+  padding: 14px 18px;
+  border: 1px solid #004d1a;
+  border-radius: 8px;
+  background: rgba(0,30,0,0.25);
 }
 
-.checkbox-group label {
+.option-group legend {
+  color: #00ff41;
+  font-weight: bold;
+  padding: 0 8px;
+  margin-bottom: 10px;
+}
+
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toggle-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-group label {
+  margin: 0;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  color: #aaffaa;
+  background: transparent;
+  border: 2px solid #004d1a;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-group label:hover {
+  border-color: #00aa33;
+  color: #e0ffe0;
+}
+
+.toggle-group input[type="radio"]:checked + label,
+.toggle-group input[type="radio"]:focus-visible + label {
+  background: #004d1a;
+  border-color: #00ff41;
+  color: #00ff41;
+  box-shadow: 0 0 12px rgba(0,255,65,0.3);
+}
+
+.toggle-group-2 {
+  gap: 12px;
+}
+
+/* Rules – toggle switches (multi choice) */
+.rules-group .switch-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   margin: 0;
   color: #aaffaa;
   font-weight: normal;
   cursor: pointer;
 }
 
-.checkbox-group input[type="checkbox"] {
-  margin-right: 8px;
-  accent-color: #00ff41;
+.switch-slider {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  background: #0f1a0f;
+  border: 2px solid #004d1a;
+  border-radius: 999px;
+  transition: 0.25s;
+}
+
+.switch-slider::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 2px;
+  top: 1px;
+  background: #004d1a;
+  border-radius: 50%;
+  transition: 0.25s;
+}
+
+.switch-input:checked + .switch-label .switch-slider {
+  background: rgba(0,77,26,0.5);
+  border-color: #00ff41;
+  box-shadow: 0 0 10px rgba(0,255,65,0.3);
+}
+
+.switch-input:checked + .switch-label .switch-slider::after {
+  left: 24px;
+  background: #00ff41;
+}
+
+.switch-input:focus-visible + .switch-label .switch-slider {
+  box-shadow: 0 0 0 3px rgba(0,255,65,0.35);
 }
 
 .buttons {

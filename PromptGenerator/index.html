@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prompt Generator – Salesforce AI</title>
+  <title>Prompt Generator – Cursor / Salesforce</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,35 +12,99 @@
     <header>
       <h1>Salesforce Prompt Generator</h1>
       <p class="subtitle">
-        Create high-quality prompts for AI assistants in VS Code.<br>
-        Describe your task → get a clean prompt ready to paste.
+        Generate prompts for Cursor to develop or enhance Salesforce code.<br>
+        Task → clean prompt → paste in Cursor. Output: structured paragraphs, no lists.
       </p>
     </header>
 
     <main>
       <form id="promptForm">
-        <label for="context">Context / Task / Code</label>
-        <textarea 
-          id="context" 
-          rows="8" 
-          placeholder="Describe what you need. Examples:&#10;• Fix this Apex class for bulkification&#10;• Add new validation in this Flow without breaking anything&#10;• Review this LWC for security&#10;• Write test class for this trigger"
+        <label for="context">What do you need?</label>
+        <textarea
+          id="context"
+          rows="6"
+          placeholder="Describe the task. e.g. Add bulkification to this trigger; build an LWC for this record list; fix the flow so it doesn't run on bulk update; write a test class for this class."
         ></textarea>
 
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="rules" value="best-practices"> Include Salesforce best practices</label>
-          <label><input type="checkbox" name="rules" value="no-break"> Do NOT break / change existing functionality</label>
-          <label><input type="checkbox" name="rules" value="anti-patterns"> Include what NOT to do (common mistakes)</label>
-          <label><input type="checkbox" name="rules" value="bulkified"> Make it bulkified & governor-limit safe</label>
-          <label><input type="checkbox" name="rules" value="step-by-step"> Write in detailed step-by-step style</label>
-          <label><input type="checkbox" name="rules" value="flow"> This is related to a Flow</label>
-          <label><input type="checkbox" name="rules" value="apex"> This is related to an Apex class / trigger</label>
-        </div>
+        <fieldset class="option-group">
+          <legend>Type</legend>
+          <div class="toggle-group" role="group" aria-label="Type">
+            <input type="radio" name="type" id="typeApex" value="Apex" checked>
+            <label for="typeApex">Apex</label>
+            <input type="radio" name="type" id="typeLWC" value="LWC">
+            <label for="typeLWC">LWC</label>
+            <input type="radio" name="type" id="typeFlow" value="Flow">
+            <label for="typeFlow">Flow</label>
+            <input type="radio" name="type" id="typeIntegration" value="Integration">
+            <label for="typeIntegration">Integration</label>
+            <input type="radio" name="type" id="typeOther" value="Other">
+            <label for="typeOther">Other</label>
+          </div>
+        </fieldset>
 
-        <label for="extra">Additional comments / special instructions (optional)</label>
-        <textarea 
-          id="extra" 
-          rows="4" 
-          placeholder="Examples:&#10;• Only use async if really needed&#10;• Avoid DML in loops&#10;• Prefer Flow over code when possible&#10;• Keep under 200 lines"
+        <fieldset class="option-group">
+          <legend>Scope</legend>
+          <div class="toggle-group" role="group" aria-label="Scope">
+            <input type="radio" name="scope" id="scopeNew" value="New component" checked>
+            <label for="scopeNew">New component</label>
+            <input type="radio" name="scope" id="scopeEnhance" value="Enhance existing">
+            <label for="scopeEnhance">Enhance existing</label>
+            <input type="radio" name="scope" id="scopeBugfix" value="Bug fix">
+            <label for="scopeBugfix">Bug fix</label>
+            <input type="radio" name="scope" id="scopeRefactor" value="Refactor">
+            <label for="scopeRefactor">Refactor</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="option-group">
+          <legend>Planning to deploy?</legend>
+          <div class="toggle-group toggle-group-2" role="group" aria-label="Deploy">
+            <input type="radio" name="deploy" id="deployYes" value="Yes" checked>
+            <label for="deployYes">Yes</label>
+            <input type="radio" name="deploy" id="deployNo" value="No">
+            <label for="deployNo">No</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="option-group">
+          <legend>Deliverable</legend>
+          <div class="toggle-group" role="group" aria-label="Deliverable">
+            <input type="radio" name="deliverable" id="delCode" value="Code only" checked>
+            <label for="delCode">Code only</label>
+            <input type="radio" name="deliverable" id="delCodeTest" value="Code + test class">
+            <label for="delCodeTest">Code + test class</label>
+            <input type="radio" name="deliverable" id="delTestOnly" value="Test class only">
+            <label for="delTestOnly">Test class only</label>
+            <input type="radio" name="deliverable" id="delReview" value="Review / explain only">
+            <label for="delReview">Review only</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="option-group rules-group">
+          <legend>Rules (toggle on as needed)</legend>
+          <div class="switch-row">
+            <input type="checkbox" name="rules" id="r1" value="best-practices" class="switch-input">
+            <label for="r1" class="switch-label"><span class="switch-slider"></span> Best practices</label>
+          </div>
+          <div class="switch-row">
+            <input type="checkbox" name="rules" id="r2" value="no-break" class="switch-input">
+            <label for="r2" class="switch-label"><span class="switch-slider"></span> Don't break existing</label>
+          </div>
+          <div class="switch-row">
+            <input type="checkbox" name="rules" id="r3" value="bulkified" class="switch-input">
+            <label for="r3" class="switch-label"><span class="switch-slider"></span> Bulkified & governor limits</label>
+          </div>
+          <div class="switch-row">
+            <input type="checkbox" name="rules" id="r4" value="anti-patterns" class="switch-input">
+            <label for="r4" class="switch-label"><span class="switch-slider"></span> Call out anti-patterns</label>
+          </div>
+        </fieldset>
+
+        <label for="extra">Extra instructions (optional)</label>
+        <textarea
+          id="extra"
+          rows="3"
+          placeholder="e.g. Prefer Flow over code; keep under 200 lines; no DML in loops."
         ></textarea>
 
         <div class="buttons">

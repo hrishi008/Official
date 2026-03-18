@@ -12,38 +12,28 @@ const copyMsg = document.getElementById('copyMessage');
 function buildPrompt() {
   const context = document.getElementById('context').value.trim();
   const extra = document.getElementById('extra').value.trim();
-  const checked = [...document.querySelectorAll('input[name="rules"]:checked')]
-    .map(cb => cb.value);
+  const type = document.querySelector('input[name="type"]:checked')?.value || 'Other';
+  const scope = document.querySelector('input[name="scope"]:checked')?.value || 'New component';
+  const deploy = document.querySelector('input[name="deploy"]:checked')?.value || 'Yes';
+  const deliverable = document.querySelector('input[name="deliverable"]:checked')?.value || 'Code only';
+  const checked = [...document.querySelectorAll('input[name="rules"]:checked')].map(cb => cb.value);
 
   if (!context) return null;
 
-  let rules = [];
+  const rules = [];
+  if (checked.includes('best-practices')) rules.push("Follow current Salesforce best practices.");
+  if (checked.includes('no-break')) rules.push("Do not change or break existing functionality — only add or fix what was requested.");
+  if (checked.includes('bulkified')) rules.push("Make the solution bulkified and governor-limit safe.");
+  if (checked.includes('anti-patterns')) rules.push("Mention common anti-patterns or mistakes to avoid.");
 
-  if (checked.includes('best-practices')) {
-    rules.push("Always follow current Salesforce best practices.");
-  }
-  if (checked.includes('no-break')) {
-    rules.push("DO NOT change or break any existing functionality or business logic — only add/fix exactly what was requested.");
-  }
-  if (checked.includes('anti-patterns')) {
-    rules.push("Clearly state common anti-patterns and mistakes to avoid in this scenario.");
-  }
-  if (checked.includes('bulkified')) {
-    rules.push("Ensure the solution is properly bulkified and respects all governor limits.");
-  }
-  if (checked.includes('step-by-step')) {
-    rules.push("Think step-by-step and explain your reasoning before showing the final code.");
-  }
+  const rulesBlock = rules.length
+    ? " " + rules.join(" ") + "."
+    : "";
 
-  let prompt = `You are a senior Salesforce architect with 12+ years of experience in Apex, Flows, LWC, triggers, integrations and best practices.
+  const outputFormat = " Please respond in structured paragraphs only (no bullet or numbered lists), and be concise.";
 
-Task: ${context}
-
-Strict rules to follow:
-${rules.length ? '- ' + rules.join('\n- ') : '- Use your best professional judgment.'}
-${extra ? `\nAdditional instructions:\n${extra}` : ''}
-
-Output only the clean prompt paragraph(s) ready to copy-paste into VS Code AI tools (Continue / Cursor / Cody / etc.). No extra commentary.`;
+  // This is the prompt only — user pastes it into Cursor; Cursor then gives the solution.
+  let prompt = `I need help with: ${context} This is ${type}. Scope: ${scope}. I plan to deploy: ${deploy}. I need: ${deliverable}.${rulesBlock}${extra ? " " + extra : ""}${outputFormat}`;
 
   return prompt.trim();
 }
@@ -51,7 +41,7 @@ Output only the clean prompt paragraph(s) ready to copy-paste into VS Code AI to
 generateBtn.addEventListener('click', () => {
   const promptText = buildPrompt();
   if (!promptText) {
-    alert("Please enter at least some context / task description.");
+    alert("Please enter what you need (task description).");
     return;
   }
 
