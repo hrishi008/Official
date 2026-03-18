@@ -41,7 +41,7 @@ Task: ${context}
 
 Strict rules to follow:
 ${rules.length ? '- ' + rules.join('\n- ') : '- Use your best professional judgment.'}
-\( {extra ? `\nAdditional instructions:\n \){extra}` : ''}
+${extra ? `\nAdditional instructions:\n${extra}` : ''}
 
 Output only the clean prompt paragraph(s) ready to copy-paste into VS Code AI tools (Continue / Cursor / Cody / etc.). No extra commentary.`;
 
