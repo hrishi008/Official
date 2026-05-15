@@ -8,6 +8,15 @@ const closeModalBtn = document.getElementById('closeModal');
 const outputEl = document.getElementById('promptOutput');
 const spinner = document.getElementById('spinner');
 const copyMsg = document.getElementById('copyMessage');
+const aiLinks = document.querySelectorAll('.ai-link');
+
+function updateAiLinks(promptText) {
+  const q = encodeURIComponent(promptText);
+  aiLinks.forEach(link => {
+    const base = link.dataset.base || link.href.split('?')[0];
+    link.href = `${base}?q=${q}`;
+  });
+}
 
 function buildPrompt() {
   const context = document.getElementById('context').value.trim();
@@ -50,6 +59,7 @@ generateBtn.addEventListener('click', () => {
   setTimeout(() => {
     spinner.style.display = 'none';
     outputEl.textContent = promptText;
+    updateAiLinks(promptText);
     modal.style.display = 'flex';
   }, 3000);
 });
