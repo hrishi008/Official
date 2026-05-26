@@ -83,6 +83,17 @@ SPG.app = {
         this.showToast('Copied to clipboard');
       });
     });
+
+    this.preview?.addEventListener('input', () => {
+      this.updateChatGptLink(this.preview.value);
+    });
+  },
+
+  updateChatGptLink(promptText) {
+    const link = document.getElementById('chatGptLink');
+    if (!link) return;
+    const base = link.dataset.base || link.href.split('?')[0];
+    link.href = `${base}?q=${encodeURIComponent(promptText)}`;
   },
 
   generate() {
@@ -100,6 +111,7 @@ SPG.app = {
     if (!prompt) return;
 
     if (this.preview) this.preview.value = prompt;
+    this.updateChatGptLink(prompt);
     this.modal?.classList.add('open');
     this.preview?.focus();
   },

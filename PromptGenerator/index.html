@@ -188,11 +188,24 @@
         <textarea id="promptPreview" class="modal__preview" aria-label="Generated prompt preview"></textarea>
       </div>
       <div class="modal__footer">
+        <div class="modal__footer-start">
+          <span class="modal__open-label">Open in:</span>
+          <a
+            id="chatGptLink"
+            href="https://chat.openai.com"
+            data-base="https://chat.openai.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--neutral modal__ai-link"
+          >ChatGPT</a>
+        </div>
+        <div class="modal__footer-actions">
         <button type="button" id="modalCloseBtn" class="btn btn--neutral">Close</button>
         <button type="button" id="copyBtn" class="btn btn--brand">
           <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
           Copy to Clipboard
         </button>
+        </div>
       </div>
     </div>
   </div>

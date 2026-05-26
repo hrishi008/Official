@@ -96,11 +96,35 @@
 .modal__footer {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sf-space-sm);
-  justify-content: flex-end;
+  gap: var(--sf-space-md);
+  align-items: center;
+  justify-content: space-between;
   padding: var(--sf-space-md) var(--sf-space-lg);
   border-top: 1px solid var(--sf-border-light);
   background: var(--sf-bg-alt);
+}
+
+.modal__footer-start {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-sm);
+}
+
+.modal__footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sf-space-sm);
+  margin-left: auto;
+}
+
+.modal__open-label {
+  font-size: 0.8125rem;
+  color: var(--sf-text-muted);
+  font-weight: 600;
+}
+
+.modal__ai-link {
+  text-decoration: none;
 }
 
 .toast {
