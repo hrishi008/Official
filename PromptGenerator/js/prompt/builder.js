@@ -44,7 +44,7 @@ SPG.promptBuilder = {
     }
 
     sections.push('');
-    sections.push(this.cursorInstructions(mode));
+    sections.push(this.cursorInstructions('simple'));
 
     return sections.join('\n').trim();
   },
