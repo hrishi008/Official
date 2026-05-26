@@ -1,0 +1,103 @@
+window.SPG = window.SPG || {};
+
+SPG.data = {
+  components: [
+    'Apex Class',
+    'Apex Trigger',
+    'LWC',
+    'Aura',
+    'Visualforce',
+    'Flow',
+    'Screen Flow',
+    'Record Triggered Flow',
+    'Orchestration Flow',
+    'Approval Process',
+    'Validation Rule',
+    'Formula Field',
+    'Custom Metadata',
+    'Custom Setting',
+    'Permission Set',
+    'Profile',
+    'Queue',
+    'Platform Event',
+    'Batch Apex',
+    'Queueable',
+    'Future Method',
+    'Integration',
+    'REST API',
+    'SOAP API',
+    'Named Credential',
+    'External Service',
+    'Object',
+    'Field',
+    'Record Type',
+    'Sharing Rule',
+    'Reports',
+    'Dashboard',
+    'Email Template',
+    'Omnistudio',
+    'Data Cloud',
+    'Marketing Cloud',
+    'Experience Cloud'
+  ],
+
+  toggles: [
+    { id: 'config-workbook', label: 'Add changes to configuration workbook', prompt: 'Document all changes in a configuration workbook with field/API names, dependencies, and deployment order.' },
+    { id: 'jira-status', label: 'Update Jira story status', prompt: 'Include steps to update the Jira story status and link relevant commits or metadata.' },
+    { id: 'deployment-steps', label: 'Include deployment steps', prompt: 'Provide clear deployment steps including pre-deployment checklist and post-deployment verification.' },
+    { id: 'rollback-steps', label: 'Include rollback steps', prompt: 'Include rollback steps and recovery plan if deployment fails.' },
+    { id: 'test-class', label: 'Include test class generation', prompt: 'Generate or update Apex test classes with meaningful assertions and minimum 75% coverage target.' },
+    { id: 'governor-limits', label: 'Include governor limit handling', prompt: 'Ensure governor-limit safe design with bulkification, SOQL/DML aggregation, and limit-conscious patterns.' },
+    { id: 'security-review', label: 'Include security review considerations', prompt: 'Address security review items: CRUD/FLS, sharing, sensitive data handling, and secure callouts.' },
+    { id: 'bulkification', label: 'Include bulkification standards', prompt: 'Apply bulkification standards — no SOQL/DML in loops, use collections, and handle 200+ record contexts.' },
+    { id: 'naming-conventions', label: 'Include naming convention standards', prompt: 'Follow Salesforce naming conventions for classes, variables, flows, and custom fields/objects.' },
+    { id: 'documentation', label: 'Include documentation comments', prompt: 'Add clear documentation comments explaining purpose, inputs, outputs, and edge cases.' },
+    { id: 'post-deploy-validation', label: 'Include post deployment validation', prompt: 'Define post-deployment validation steps and smoke tests in the target org.' },
+    { id: 'uat-steps', label: 'Include user acceptance testing steps', prompt: 'Outline UAT steps with business scenarios, expected results, and sign-off criteria.' }
+  ],
+
+  guardrails: [
+    { id: 'no-breaking', label: 'No breaking changes', prompt: 'Do not introduce breaking changes to existing functionality, integrations, or user workflows.' },
+    { id: 'best-practices', label: 'Follow Salesforce best practices', prompt: 'Follow current Salesforce platform best practices and recommended patterns.' },
+    { id: 'bulkified-only', label: 'Bulkified code only', prompt: 'All Apex must be bulkified and safe for trigger contexts up to 200 records.' },
+    { id: 'governor-safe', label: 'Governor-limit safe implementation', prompt: 'Design for governor limits — minimize SOQL/DML, use async where appropriate.' },
+    { id: 'enterprise-scale', label: 'Enterprise-scale architecture', prompt: 'Design for enterprise scale: separation of concerns, service layers, and maintainable structure.' },
+    { id: 'reusable-code', label: 'Reusable code standards', prompt: 'Prefer reusable, modular code over one-off implementations.' },
+    { id: 'security-first', label: 'Security-first implementation', prompt: 'Apply security-first design: least privilege, input validation, and secure defaults.' },
+    { id: 'fls-crud', label: 'FLS and CRUD checks', prompt: 'Enforce CRUD and FLS checks using Security.stripInaccessible or WITH SECURITY_ENFORCED where applicable.' },
+    { id: 'test-coverage', label: 'Proper test coverage', prompt: 'Provide meaningful test coverage with positive, negative, and bulk test scenarios.' },
+    { id: 'no-hardcoding', label: 'Avoid hardcoding', prompt: 'Avoid hardcoded IDs, URLs, and org-specific values — use Custom Metadata, Custom Settings, or Named Credentials.' },
+    { id: 'metadata-driven', label: 'Metadata-driven approach where possible', prompt: 'Prefer metadata-driven configuration (Custom Metadata, Custom Settings) over hardcoded logic.' }
+  ],
+
+  sections: [
+    { id: 'apex', label: 'Apex', placeholder: 'Apex classes, triggers, batch, queueable requirements…' },
+    { id: 'lwc', label: 'LWC', placeholder: 'Lightning Web Component UI, events, wire adapters…' },
+    { id: 'flow', label: 'Flow', placeholder: 'Record-triggered, autolaunched, or scheduled flow logic…' },
+    { id: 'screen-flow', label: 'Screen Flow', placeholder: 'Screen elements, user inputs, navigation, validations…' },
+    { id: 'approval', label: 'Approval Process', placeholder: 'Approval criteria, steps, actions, email alerts…' },
+    { id: 'objects', label: 'Objects', placeholder: 'Custom/standard objects, relationships, OWD…' },
+    { id: 'fields', label: 'Fields', placeholder: 'Field types, formulas, validations, dependencies…' },
+    { id: 'permission-sets', label: 'Permission Sets', placeholder: 'Object/field permissions, app permissions, tab visibility…' },
+    { id: 'profiles', label: 'Profiles', placeholder: 'Profile changes, license considerations…' },
+    { id: 'sharing-security', label: 'Sharing & Security', placeholder: 'Sharing rules, role hierarchy, OWD, apex sharing…' },
+    { id: 'integrations', label: 'Integrations', placeholder: 'REST/SOAP callouts, named credentials, external services…' },
+    { id: 'platform-events', label: 'Platform Events', placeholder: 'Event definitions, publishers, subscribers…' },
+    { id: 'custom-metadata', label: 'Custom Metadata', placeholder: 'CMDT types, records, deployment considerations…' },
+    { id: 'deployment', label: 'Deployment Requirements', placeholder: 'Sandbox path, change sets, CI/CD, deployment order…' },
+    { id: 'test-strategy', label: 'Test Strategy', placeholder: 'Unit tests, integration tests, UAT scope…' },
+    { id: 'error-handling', label: 'Error Handling', placeholder: 'Exception handling, user-friendly messages, logging…' },
+    { id: 'logging', label: 'Logging', placeholder: 'Debug logs, custom logging framework, monitoring…' },
+    { id: 'scalability', label: 'Scalability Considerations', placeholder: 'Volume, async processing, caching, limits…' },
+    { id: 'data-migration', label: 'Data Migration Notes', placeholder: 'Data load, transformation, validation, rollback…' },
+    { id: 'cicd', label: 'CI/CD Instructions', placeholder: 'Pipeline steps, validation gates, automated tests…' },
+    { id: 'devops', label: 'DevOps Instructions', placeholder: 'Branch strategy, PR review, release management…' },
+    { id: 'sandbox-prod', label: 'Sandbox/Production Constraints', placeholder: 'Org-specific limits, feature availability, go-live constraints…' }
+  ],
+
+  simpleOptions: {
+    scope: ['New component', 'Enhance existing', 'Bug fix', 'Refactor'],
+    deploy: ['Yes', 'No'],
+    deliverable: ['Code only', 'Code + test class', 'Test class only', 'Review / explain only']
+  }
+};

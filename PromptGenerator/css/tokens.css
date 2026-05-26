@@ -1,0 +1,46 @@
+:root {
+  /* Salesforce Lightning-inspired palette */
+  --sf-brand: #0176d3;
+  --sf-brand-dark: #014486;
+  --sf-brand-light: #e5f3ff;
+  --sf-success: #2e844a;
+  --sf-warning: #fe9339;
+  --sf-error: #ea001e;
+
+  --sf-bg: #f3f3f3;
+  --sf-bg-alt: #fafaf9;
+  --sf-surface: #ffffff;
+  --sf-surface-hover: #f3f3f3;
+
+  --sf-text: #181818;
+  --sf-text-secondary: #444444;
+  --sf-text-muted: #706e6b;
+  --sf-text-inverse: #ffffff;
+
+  --sf-border: #c9c9c9;
+  --sf-border-light: #e5e5e5;
+  --sf-border-focus: #0176d3;
+
+  --sf-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --sf-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --sf-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  --sf-radius-sm: 0.25rem;
+  --sf-radius-md: 0.5rem;
+  --sf-radius-lg: 0.75rem;
+  --sf-radius-pill: 999px;
+
+  --sf-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --sf-font-mono: 'SF Mono', 'Consolas', 'Liberation Mono', monospace;
+
+  --sf-space-xs: 0.25rem;
+  --sf-space-sm: 0.5rem;
+  --sf-space-md: 1rem;
+  --sf-space-lg: 1.5rem;
+  --sf-space-xl: 2rem;
+  --sf-space-2xl: 3rem;
+
+  --sf-header-height: 3.5rem;
+  --sf-max-width: 72rem;
+  --sf-transition: 0.15s ease;
+}
