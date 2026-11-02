@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Meri Jaan ke liye 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --rose: #e91e8c; --deep-rose: #c2185b; --gold: #ffd700; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: "Noto Sans Devanagari", "Poppins", sans-serif;
+      background: #1a0010;
+      user-select: none; -webkit-user-select: none;
+    }
+    .screen {
+      position: fixed; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.6s ease; z-index: 1;
+    }
+    .screen.active { opacity: 1; pointer-events: all; z-index: 10; }
+    #bg-layer {
+      position: fixed; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #1a0010 0%, #3d0030 50%, #1a0010 100%);
+      overflow: hidden;
+    }
+    #bg-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.38; filter: blur(1px) saturate(1.4); }
+    .bg-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(26,0,16,0.6) 0%, rgba(26,0,16,0.25) 40%, rgba(26,0,16,0.7) 100%);
+    }
+    #hearts-container { position: fixed; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+    .heart-float { position: absolute; bottom: -60px; animation: floatUp linear forwards; opacity: 0; }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.9; }
+      90%  { opacity: 0.5; }
+      100% { transform: translateY(-115vh) rotate(30deg); opacity: 0; }
+    }
+    .petal { position: fixed; pointer-events: none; z-index: 3; animation: petalFall linear forwards; opacity: 0; }
+    @keyframes petalFall {
+      0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity: 0.8; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(40px); opacity: 0; }
+    }
+    #intro-screen { text-align: center; padding: 30px 24px; gap: 22px; }
+    .intro-heart {
+      font-size: 4.5rem;
+      animation: heartBeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 24px #e91e8c); display: block;
+    }
+    @keyframes heartBeat {
+      0%,100% { transform: scale(1); } 14% { transform: scale(1.3); }
+      28% { transform: scale(1); } 42% { transform: scale(1.18); }
+    }
+    .intro-title {
+      font-family: "Dancing Script", cursive; font-size: 2.5rem; color: var(--gold);
+      text-shadow: 0 0 30px rgba(255,215,0,0.65), 0 2px 6px rgba(0,0,0,0.9); line-height: 1.25;
+    }
+    .intro-sub { font-size: 1rem; color: #ffb3d1; line-height: 1.7; padding: 0 12px; }
+    .intro-btn {
+      padding: 16px 52px; font-size: 1.2rem;
+      font-family: "Dancing Script", cursive; font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+      border: none; border-radius: 50px; cursor: pointer;
+      box-shadow: 0 8px 30px rgba(233,30,140,0.55), inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: transform 0.12s; -webkit-tap-highlight-color: transparent;
+    }
+    .intro-btn:active { transform: scale(0.92); }
+    #question-screen { padding: 20px 18px; gap: 0; justify-content: flex-start; padding-top: 55px; }
+    .prog-wrap { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: rgba(255,255,255,0.1); }
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      border-radius: 0 4px 4px 0;
+      transition: width 0.6s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 0 14px rgba(233,30,140,0.7);
+    }
+    .prog-dots { position: absolute; top: 12px; right: 16px; display: flex; gap: 5px; }
+    .pdot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18); transition: background 0.3s, transform 0.3s; }
+    .pdot.done { background: var(--rose); transform: scale(1.2); }
+    .pdot.current { background: var(--gold); transform: scale(1.5); animation: dotPulse 1s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{transform:scale(1.5)} 50%{transform:scale(1.8)} }
+    .ribbon { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-size: 0.82rem; color: rgba(255,179,209,0.7); white-space: nowrap; letter-spacing: 0.8px; font-family: "Dancing Script", cursive; }
+    .q-ordinal { font-family: "Dancing Script", cursive; font-size: 1rem; color: #ffb3d1; text-align: center; margin-bottom: 12px; margin-top: 28px; }
+    .q-card {
+      width: 100%; max-width: 370px;
+      background: rgba(255,255,255,0.075);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 26px;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      padding: 30px 22px 24px; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .q-card.animate-in { animation: cardIn 0.55s cubic-bezier(.34,1.56,.64,1) both; }
+    @keyframes cardIn {
+      from { transform: translateY(50px) scale(0.88); opacity: 0; }
+      to   { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .q-emoji { font-size: 3rem; display: block; margin-bottom: 16px; animation: wobble 2.2s ease-in-out infinite; filter: drop-shadow(0 0 14px rgba(233,30,140,0.65)); }
+    @keyframes wobble { 0%,100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.08); } }
+    .q-text { font-size: 1.28rem; font-weight: 700; color: #fff; line-height: 1.55; margin-bottom: 8px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+    .q-sub { font-size: 0.8rem; color: rgba(255,179,209,0.75); font-style: italic; margin-bottom: 26px; }
+    .btn-row { display: flex; gap: 14px; justify-content: center; }
+    .btn-yes {
+      padding: 15px 38px; font-size: 1.05rem;
+      font-family: "Dancing Script", cursive; font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, #e91e8c, #c2185b);
+      border: none; border-radius: 50px; cursor: pointer;
+      box-shadow: 0 6px 25px rgba(233,30,140,0.55), inset 0 1px 0 rgba(255,255,255,0.22);
+      transition: transform 0.12s; -webkit-tap-highlight-color: transparent;
+    }
+    .btn-yes:active { transform: scale(0.9); }
+    .btn-no {
+      padding: 15px 30px; font-size: 1rem;
+      font-family: "Dancing Script", cursive; font-weight: 700;
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px; cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.12s; -webkit-tap-highlight-color: transparent;
+    }
+    .btn-no:active { transform: scale(0.9); }
+    .btn-no.shatter { animation: shatterAnim 0.65s ease forwards; }
+    @keyframes shatterAnim {
+      0%   { transform: scale(1); opacity: 1; }
+      15%  { transform: scale(1.2) rotate(4deg); filter: brightness(2.5); }
+      35%  { transform: scale(0.8) rotate(-6deg) skewX(12deg); }
+      55%  { transform: scale(1.12) rotate(6deg) skewY(6deg); opacity: 0.55; }
+      75%  { transform: scale(0.45) rotate(-12deg); opacity: 0.25; filter: blur(3px); }
+      100% { transform: scale(0); opacity: 0; filter: blur(8px); }
+    }
+    #cat-popup {
+      position: fixed; inset: 0; z-index: 60;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 70px; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    }
+    #cat-popup.show { pointer-events: all; opacity: 1; }
+    .cat-bubble { display: flex; flex-direction: column; align-items: center; gap: 0; transform: translateY(130%); transition: transform 0.5s cubic-bezier(.34,1.56,.64,1); }
+    #cat-popup.show .cat-bubble { transform: translateY(0); }
+    .cat-speech {
+      background: linear-gradient(135deg, #fff0f5, #fde0ec);
+      border: 2px solid var(--rose); border-radius: 20px 20px 20px 5px;
+      padding: 16px 22px; max-width: 280px; text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.35); position: relative;
+    }
+    .cat-speech::after { content: ""; position: absolute; bottom: -15px; left: 26px; border: 8px solid transparent; border-top-color: var(--rose); }
+    .cat-speech p { font-size: 0.95rem; color: #880e4f; font-weight: 700; line-height: 1.55; }
+    .cat-img-el { width: 115px; margin-top: 12px; filter: drop-shadow(0 5px 14px rgba(0,0,0,0.4)); animation: catBounce 0.4s ease-in-out infinite alternate; }
+    @keyframes catBounce { from { transform: rotate(-5deg) translateY(0); } to { transform: rotate(5deg) translateY(-5px); } }
+    .cat-emoji-fb { font-size: 5.5rem; margin-top: 10px; animation: catBounce 0.4s ease-in-out infinite alternate; }
+    .cat-ok-btn {
+      margin-top: 14px; padding: 12px 36px;
+      background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+      color: #fff; border: none; border-radius: 50px;
+      font-size: 0.98rem; font-family: "Dancing Script", cursive; font-weight: 700;
+      cursor: pointer; box-shadow: 0 5px 20px rgba(233,30,140,0.45);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cat-ok-btn:active { transform: scale(0.93); }
+    #result-screen {
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 28px 18px 50px; gap: 14px;
+      justify-content: flex-start; align-items: center;
+    }
+    .result-title { font-family: "Dancing Script", cursive; font-size: 2rem; color: var(--gold); text-align: center; text-shadow: 0 0 25px rgba(255,215,0,0.6); animation: shimmer 2.2s ease-in-out infinite; }
+    @keyframes shimmer { 0%,100% { text-shadow: 0 0 20px rgba(255,215,0,0.5); } 50% { text-shadow: 0 0 45px rgba(255,215,0,1), 0 0 70px rgba(255,215,0,0.35); } }
+    .result-sub { font-size: 0.88rem; color: #ffb3d1; text-align: center; margin-top: -6px; }
+    .answer-list { width: 100%; max-width: 370px; display: flex; flex-direction: column; gap: 10px; }
+    .answer-item {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 18px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; transform: translateX(-35px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    }
+    .answer-item.vis { opacity: 1; transform: translateX(0); }
+    .ans-num { font-family: "Dancing Script", cursive; font-size: 1.5rem; color: var(--rose); min-width: 26px; text-align: center; }
+    .ans-content { flex: 1; }
+    .ans-q { font-size: 0.77rem; color: rgba(255,179,209,0.75); margin-bottom: 2px; line-height: 1.3; }
+    .ans-a { font-size: 1rem; font-weight: 700; color: #fff; }
+    .ans-badge { font-size: 1.5rem; }
+    .bday-finale {
+      width: 100%; max-width: 370px;
+      background: linear-gradient(135deg, rgba(233,30,140,0.18), rgba(255,215,0,0.08));
+      border: 1px solid rgba(255,215,0,0.28); border-radius: 26px;
+      padding: 30px 22px; text-align: center;
+      opacity: 0; transform: scale(0.75);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 0 50px rgba(233,30,140,0.2), inset 0 1px 0 rgba(255,215,0,0.1);
+    }
+    .bday-finale.vis { opacity: 1; transform: scale(1); }
+    .turtle-img { width: 150px; margin: 0 auto 18px; display: block; filter: drop-shadow(0 0 20px rgba(255,179,209,0.5)); animation: floatBob 2.8s ease-in-out infinite; }
+    @keyframes floatBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .hbd-main { font-family: "Dancing Script", cursive; font-size: 2.3rem; color: var(--gold); text-shadow: 0 0 35px rgba(255,215,0,0.65); line-height: 1.2; margin-bottom: 12px; }
+    .hbd-msg { font-size: 0.9rem; color: #ffb3d1; line-height: 1.7; }
+    .confetti-row { font-size: 1.6rem; letter-spacing: 5px; margin-top: 14px; animation: confBounce 1s ease-in-out infinite; }
+    @keyframes confBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .sparkle-el { position: fixed; pointer-events: none; z-index: 100; animation: sparklePop 0.85s ease forwards; }
+    @keyframes sparklePop { 0% { transform: translate(0,0) scale(0); opacity: 1; } 65% { opacity: 1; } 100% { transform: translate(var(--dx),var(--dy)) scale(1.3); opacity: 0; } }
+  </style>
+</head>
+<body>
+
+<div id="bg-layer">
+  <img id="bg-img" src="romantic_rose_bg.png" alt="" onerror="this.style.display='none'" />
+  <div class="bg-overlay"></div>
+</div>
+<div id="hearts-container"></div>
+
+<!-- INTRO -->
+<div id="intro-screen" class="screen active">
+  <span class="intro-heart">💖</span>
+  <h1 class="intro-title">Meri Jaan ke liye<br/>Kuch Sawaal 🌹</h1>
+  <p class="intro-sub">
+    Mujhe tujhse kuch aise sawaal poochne hain<br/>
+    jo seedha mere dil se nikle hain... 💌<br/>
+    <em style="color:var(--gold);">Sach bol dena, please 🥺</em>
+  </p>
+  <button class="intro-btn" id="start-btn" onclick="startQuiz()">Haan, poochho 💕</button>
+</div>
+
+<!-- QUESTION -->
+<div id="question-screen" class="screen">
+  <div class="prog-wrap"><div class="prog-fill" id="prog-fill"></div></div>
+  <div class="prog-dots" id="prog-dots"></div>
+  <div class="ribbon" id="ribbon">Sawaal 1 / 10</div>
+  <div class="q-ordinal" id="q-ordinal">Pehla sawaal 💌</div>
+  <div class="q-card animate-in" id="q-card">
+    <span class="q-emoji" id="q-emoji">💘</span>
+    <div class="q-text" id="q-text">Loading...</div>
+    <div class="q-sub" id="q-sub"></div>
+    <div class="btn-row">
+      <button class="btn-yes" id="yes-btn" onclick="answerYes()">Haan ji 💖</button>
+      <button class="btn-no"  id="no-btn"  onclick="answerNo()">Nahi... 😶</button>
+    </div>
+  </div>
+</div>
+
+<!-- CAT POPUP -->
+<div id="cat-popup">
+  <div class="cat-bubble">
+    <div class="cat-speech">
+      <p id="cat-msg">Heyy! 😾<br/>Shutup! Sahi sahi answer do! 😤</p>
+    </div>
+    <img class="cat-img-el" id="cat-img-el" src="angry_cute_cat.png" alt="angry cat"
+         onerror="this.style.display='none';document.getElementById('cat-emoji-fb').style.display='block'" />
+    <div class="cat-emoji-fb" id="cat-emoji-fb" style="display:none">😾</div>
+    <button class="cat-ok-btn" onclick="closeCat()">Theek hai theek hai 😅</button>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="result-screen" class="screen">
+  <div class="result-title">✨ Teri dil ki baat ✨</div>
+  <div class="result-sub">Tune yahi kaha na mujhe... 🥺💕</div>
+  <div class="answer-list" id="answer-list"></div>
+  <div class="bday-finale" id="bday-finale">
+    <img class="turtle-img" id="turtle-img" src="turtle_chick_kiss.png" alt="turtle and chick kissing"
+         onerror="this.style.display='none';document.getElementById('turtle-fb').style.display='block'" />
+    <div id="turtle-fb" style="display:none;font-size:5rem;margin-bottom:16px">🐢💋🐥</div>
+    <div class="hbd-main">Happy Birthday<br/>Meri Riyudiiiiiii! 🎂💖</div>
+    <div class="hbd-msg">
+      Tujhe duniya ki saari khushiyaan milein,<br/>
+      aur main hamesha tere saath rahoon... 🌹<br/>
+      <strong style="color:var(--gold);">I Love You so much! 💕</strong>
+    </div>
+    <div class="confetti-row">🎉🎊🎈🌹💖</div>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  { emoji:"💘", text:"Kya tu mujhse pyaar karti hai?", sub:"~ Do you love me? ~", ordinal:"Pehla sawaal 💌",
+    cat1:"Heyy! 😾\nShutup kar!\nMujhe pata hai tu karti hai! 💕\nSahi jawab de!", cat2:"Ab button tod diya maine! 😤\nAb sirf ek hi option bacha! 💘" },
+  { emoji:"🥺", text:"Kya tu hamesha mere saath rahegi?", sub:"~ Will you always stay with me? ~", ordinal:"Doosra sawaal 💌",
+    cat1:"Heyy! 😾\nYeh bhi koi jawab hai?!\nTu jaanti hai tu rehti hai! 🐾\nSahi bol!", cat2:"Bilkul nahi manegi? 😤\nButton ud gaya!\nAb kehna hi padega – hamesha saath! 🥺" },
+  { emoji:"😘", text:"Kya tu mujhe ek pyaari kiss degi?", sub:"~ Will you give me a kiss? ~", ordinal:"Teesra sawaal 💌",
+    cat1:"Heyy!! 😾\nEk choti si kiss se kya ho jaata?!\nJaldi se haan bol! 💋", cat2:"Button toot gaya!! 😤\nAb sirf kiss deni hai! 💋 De de!" },
+  { emoji:"🤗", text:"Kya tu mujhe ek gehra hug degi?", sub:"~ Will you give me a warm hug? ~", ordinal:"Chotha sawaal 💌",
+    cat1:"Heyy! 😾\nHug se inkaar?!\nYeh toh bahut galat hai! 😤\nJaldi haan bol!", cat2:"Khatam! 😾 Button gone!\nAb toh jhappi deni hi padegi! 🤗" },
+  { emoji:"🌙", text:"Kya raat ko tu mera sochti hai?", sub:"~ Do you think of me at night? ~", ordinal:"Paanchwa sawaal 💌",
+    cat1:"Heyy!! 😾\nJhooth mat bol!\nRaat ko zaroor sochti hai tu! 🌙", cat2:"Pagal! 😤 Button toot gaya!\nAb sach bol – haan main sochti hoon! 💭" },
+  { emoji:"✨", text:"Kya tu mujhse hamesha pyaar karti rahegi?", sub:"~ Will you always love me? ~", ordinal:"Chhata sawaal 💌",
+    cat1:"Heyy!! 😾\nHamesha matlab HAMESHA!\nMujhe pata hai tujhe pata hai! 💕", cat2:"Button gone! 😤\nHamesha kehna hi padega ab! ✨" },
+  { emoji:"🌹", text:"Kya tu meri sabse pyaari best friend bhi hai?", sub:"~ Are you also my best friend? ~", ordinal:"Saatwa sawaal 💌",
+    cat1:"Heyy! 😾\nBest friend bhi hai tu – yeh clear hai!\nJaldi bol! 🌹", cat2:"Abe! 😤 Button ud gaya!\nHaan bol warna main rooth jaata hoon! 🐱" },
+  { emoji:"💫", text:"Kya tu meri muskaan ki wajah hai?", sub:"~ Are you the reason for my smile? ~", ordinal:"Aathwa sawaal 💌",
+    cat1:"Heyy! 😾\nWajah toh tu hi hai uski muskaan ki!\nSach bol! 💫", cat2:"Button gone! 😤\nHaan bol! Tu wajah hai uski smile ki! 💫" },
+  { emoji:"🏠", text:"Kya tu mera ghar hai, meri poori duniya?", sub:"~ Are you my home, my entire world? ~", ordinal:"Nauwa sawaal 💌",
+    cat1:"Heyy! 😾\nGhar hoti hai na tu uski!\nYeh toh feel karke dekh! 🏠", cat2:"Button gone!! 😤\nGhar kehna padega khud ko aaj! 🏠" },
+  { emoji:"🎂", text:"Kya tu meri zindagi ki sabse khoobsurat cheez hai?", sub:"~ Are you the most beautiful thing in my life? ~", ordinal:"Daswa aur aakhri sawaal 🎂",
+    cat1:"Heyy!! 😾\nAakhri sawaal hai! Sahi jawab de!\nTu toh hai hi sabse beautiful! 🌟", cat2:"BUTTON GONE FOREVER! 😤\nAur haan – tu hi sabse khoobsurat hai! 🎂" }
+];
+
+let curQ = 0, noCount = 0, answers = [];
+
+const HEARTS = ["💖","💕","💗","❤️","🌹","💘","💝","✨","🌸","💫"];
+function spawnHeart() {
+  const c = document.getElementById("hearts-container");
+  const h = document.createElement("div");
+  h.className = "heart-float";
+  h.textContent = HEARTS[Math.floor(Math.random() * HEARTS.length)];
+  h.style.left = Math.random() * 100 + "%";
+  const dur = 5.5 + Math.random() * 6;
+  h.style.animationDuration = dur + "s";
+  h.style.fontSize = (0.9 + Math.random() * 1.2) + "rem";
+  c.appendChild(h);
+  setTimeout(() => h.remove(), dur * 1000);
+}
+function spawnPetal() {
+  const p = document.createElement("div");
+  p.className = "petal";
+  p.textContent = ["🌸","🌺","🌹"][Math.floor(Math.random()*3)];
+  p.style.left = Math.random() * 100 + "%";
+  p.style.top = "-25px";
+  const dur = 7 + Math.random() * 6;
+  p.style.animationDuration = dur + "s";
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), dur * 1000);
+}
+for (let i = 0; i < 12; i++) setTimeout(spawnHeart, i * 500);
+for (let i = 0; i < 5;  i++) setTimeout(spawnPetal, i * 900);
+setInterval(() => { spawnHeart(); spawnHeart(); }, 1800);
+setInterval(spawnPetal, 2500);
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+function initDots() {
+  const wrap = document.getElementById("prog-dots");
+  wrap.innerHTML = "";
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    const d = document.createElement("div");
+    d.className = "pdot" + (i === 0 ? " current" : "");
+    d.id = "dot" + i;
+    wrap.appendChild(d);
+  }
+}
+function updateProg(idx) {
+  document.getElementById("prog-fill").style.width = (idx / QUESTIONS.length * 100) + "%";
+  document.getElementById("ribbon").textContent = "Sawaal " + (idx + 1) + " / " + QUESTIONS.length;
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    const d = document.getElementById("dot" + i);
+    if (!d) continue;
+    d.className = "pdot" + (i < idx ? " done" : i === idx ? " current" : "");
+  }
+}
+function startQuiz() { initDots(); showScreen("question-screen"); loadQ(0); }
+function loadQ(idx) {
+  noCount = 0; curQ = idx;
+  const q = QUESTIONS[idx];
+  updateProg(idx);
+  const card = document.getElementById("q-card");
+  card.classList.remove("animate-in");
+  void card.offsetWidth;
+  card.classList.add("animate-in");
+  document.getElementById("q-emoji").textContent  = q.emoji;
+  document.getElementById("q-text").textContent   = q.text;
+  document.getElementById("q-sub").textContent    = q.sub;
+  document.getElementById("q-ordinal").textContent = q.ordinal;
+  const noBtn = document.getElementById("no-btn");
+  noBtn.style.display = ""; noBtn.style.opacity = "1";
+  noBtn.disabled = false; noBtn.classList.remove("shatter");
+  noBtn.textContent = "Nahi... 😶";
+}
+function answerYes() {
+  const q = QUESTIONS[curQ];
+  answers.push({ q: q.text, emoji: q.emoji });
+  const btn = document.getElementById("yes-btn");
+  const r = btn.getBoundingClientRect();
+  spawnSparkles(r.left + r.width / 2, r.top + r.height / 2);
+  setTimeout(() => {
+    if (curQ + 1 < QUESTIONS.length) { loadQ(curQ + 1); }
+    else { showResult(); }
+  }, 380);
+}
+function spawnSparkles(cx, cy) {
+  const emojis = ["💖","✨","🌟","💕","🌸","💫","🎉"];
+  for (let i = 0; i < 12; i++) {
+    const s = document.createElement("div");
+    s.className = "sparkle-el";
+    s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    s.style.fontSize = (0.9 + Math.random() * 0.9) + "rem";
+    const angle = Math.random() * Math.PI * 2;
+    const dist  = 65 + Math.random() * 90;
+    s.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+    s.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+    s.style.left = cx + "px"; s.style.top = cy + "px";
+    s.style.animationDelay = Math.random() * 0.18 + "s";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1100);
+  }
+}
+function answerNo() {
+  noCount++;
+  const q = QUESTIONS[curQ];
+  const catPopup = document.getElementById("cat-popup");
+  const catMsg   = document.getElementById("cat-msg");
+  const noBtn    = document.getElementById("no-btn");
+  if (noCount === 1) {
+    catMsg.innerHTML = q.cat1.replace(/\n/g, "<br/>");
+    catPopup.classList.add("show");
+  } else if (noCount === 2) {
+    catMsg.innerHTML = q.cat2.replace(/\n/g, "<br/>");
+    catPopup.classList.add("show");
+    noBtn.disabled = true;
+    noBtn.classList.add("shatter");
+    setTimeout(() => { noBtn.style.display = "none"; }, 660);
+  }
+}
+function closeCat() { document.getElementById("cat-popup").classList.remove("show"); }
+function showResult() {
+  showScreen("result-screen");
+  const list   = document.getElementById("answer-list");
+  const finale = document.getElementById("bday-finale");
+  list.innerHTML = ""; finale.classList.remove("vis");
+  answers.forEach((ans, i) => {
+    const item = document.createElement("div");
+    item.className = "answer-item";
+    item.innerHTML = "<div class='ans-num'>" + (i+1) + "</div><div class='ans-content'><div class='ans-q'>" + ans.q + "</div><div class='ans-a'>Haan ji 💖</div></div><div class='ans-badge'>" + ans.emoji + "</div>";
+    list.appendChild(item);
+    setTimeout(() => item.classList.add("vis"), 200 + i * 300);
+  });
+  setTimeout(() => {
+    finale.classList.add("vis");
+    launchConfetti();
+    // Smoothly scroll result screen down to the birthday finale
+    setTimeout(() => {
+      const screen = document.getElementById("result-screen");
+      finale.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 350);
+  }, 200 + answers.length * 300 + 700);
+}
+function launchConfetti() {
+  const items = ["🎉","🎊","🎈","🌹","💖","✨","💫","🌸","🎂","🥳","💕"];
+  for (let i = 0; i < 35; i++) {
+    setTimeout(() => {
+      const c = document.createElement("div");
+      c.style.cssText = "position:fixed;left:" + (Math.random()*100) + "%;top:-30px;font-size:" + (1.2+Math.random()*1.3) + "rem;pointer-events:none;z-index:200;animation:petalFall " + (4+Math.random()*4) + "s linear forwards;opacity:0;";
+      c.textContent = items[Math.floor(Math.random() * items.length)];
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 9000);
+    }, i * 120);
+  }
+}
+</script>
+</body>
+</html>
